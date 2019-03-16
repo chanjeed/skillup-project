@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Socialite;// 追加！
+use Illuminate\Http\Request;// 追加！
+
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -56,9 +59,15 @@ class LoginController extends Controller
     */
    public function handleProviderCallback(Request $request)// 追加！
    {
-       $user = Socialite::driver('github')->user();
+     $github_user = Socialite::driver('github')->user();
 
-       $request->session()->put('github_token', $user->token);
-       return redirect('github');
+      $now = date("Y/m/d H:i:s");
+      $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
+      if (empty($app_user)) {
+          DB::insert('insert into public.user (github_id, created_at, updated_at) values (?, ?, ?)', [$github_user->user['login'], $now, $now]);
+      }
+      $request->session()->put('github_token', $github_user->token);
+
+      return redirect('github');
    }
 }
