@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-
+use Socialite;
+use Illuminate\Support\Facades\DB;
 use App\Model\Image;
 
 class UploadController extends Controller
@@ -42,18 +43,26 @@ class UploadController extends Controller
           'comment' => 'max:200',
       ]);
 
-      if ($request->file('file')->isValid([]) ) {
+      if ($request->file('file')->isValid([]) && $request->string('comment')->isValid([]) ) {
 
         // 投稿内容の受け取って変数に入れる
         $image = base64_encode(file_get_contents($request->file->getRealPath()));
 
-
         $comment = $request->input('comment');
 
-        Image::insert(["image" => $image,"comment"=>$comment]); // データベーステーブルbbsに投稿内容を入れる
+        $token = $request->session()->get('github_token', null);
 
-        $images = Image::all(); // 全データの取り出し
-        return view('home', ["images" => $images]); // homeにデータを渡
+        try {
+            $github_user = Socialite::driver('github')->userFromToken($token);
+        } catch (\Exception $e) {
+            return redirect('login/github');
+        }
+
+
+        Image::insert(["image" => $image,"comment"=>$comment,"username"=>$github_user->nickname]); // データベーステーブルbbsに投稿内容を入れる
+
+        //$images = Image::all(); // 全データの取り出し
+        return redirect('home');
 
       } else {
           return redirect()

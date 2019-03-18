@@ -81,53 +81,35 @@ text-align: center;
 }
 
 </style>
-<title>Home</title>
+<title>Profile</title>
 <link href="home.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <!-- 投稿表示エリア（編集するのはここ！） -->
-<h1>Instragram もどき</h1>
 
+<div class="username"><p class="center"><?= $username ?><p></div>
+
+
+<hr>
+<table>
 @isset($images)
   @foreach ($images as $image)
 
 
 
-    <div  class="post-container" >
-    <table>
 
-    <tr width="600">
     <td width="300">
-        <div class="username"><p class="center"><?= $image->username ?><p></div>
-    </td>
-    <td width="300">
-        <div class="delete-button"><p class="center">Delete<p></div>
-    </td>
-    </tr>
-
-
-    <tr width="600">
     <div class="center"><img src="data:image/png;base64,<?= $image->image ?>" width="300" height="300" position="relative"></div>
-    </tr>
-    <tr width="600">
-    <div class="center"><p class="center"><?= $image->comment ?> <p></div>
-    </tr>
-    <tr width="600">
-    <td width="300">
-    <p class="left" style="color:orange;">Liked! users<p>
     </td>
-    <td width="300">
-    <div class="like-button"><p class="center">Like!</p></div>
-    </td>
-    </tr>
 
-    </table>
-    </div>
+
+
+
 
 
 
 
   @endforeach
 @endisset
-
+  </table>
 </body>

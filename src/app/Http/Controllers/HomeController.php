@@ -16,8 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $images = Image::all(); // 全データの取り出し
+        $images = Image::orderBy('id', 'desc')->get(); // 全データの取り出し
         return view('home', ["images" => $images]); // homeにデータを渡す
     }
-  
+
 }
