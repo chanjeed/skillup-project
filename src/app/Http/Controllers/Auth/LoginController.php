@@ -68,6 +68,6 @@ class LoginController extends Controller
       }
       $request->session()->put('github_token', $github_user->token);
 
-      return redirect('github');
+      return redirect('home');
    }
 }

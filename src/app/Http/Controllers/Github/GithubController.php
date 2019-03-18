@@ -17,7 +17,7 @@ class GithubController extends Controller
         try {
             $github_user = Socialite::driver('github')->userFromToken($token);
         } catch (\Exception $e) {
-            return redirect('login/github');
+            return redirect('home');
         }
 
 

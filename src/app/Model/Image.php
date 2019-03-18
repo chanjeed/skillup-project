@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    protected $fillable = ['image','comment']; // 追記したところ
+    protected $fillable = ['image','comment','username','like']; // 追記したところ
 }
