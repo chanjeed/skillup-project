@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
+use App\Model\Image;
+
 class HomeController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $images = Image::all(); // 全データの取り出し
+        return view('home', ["images" => $images]); // homeにデータを渡す
     }
     /**
    * ファイルアップロード処理
@@ -36,8 +39,17 @@ class HomeController extends Controller
 
       if ($request->file('file')->isValid([])) {
 
+        // 投稿内容の受け取って変数に入れる
         $image = base64_encode(file_get_contents($request->file->getRealPath()));
-        return view('home')->with('image', $image);
+
+
+        //$comment = $request->input('comment');
+
+        Image::insert(["image" => $image]); // データベーステーブルbbsに投稿内容を入れる
+
+        $images = Image::all(); // 全データの取り出し
+        return view('home', ["images" => $images]); // homeにデータを渡
+
       } else {
           return redirect()
               ->back()

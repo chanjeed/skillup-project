@@ -10,12 +10,13 @@
 <!-- フォーム -->
 <form action="{{ url('upload') }}" method="POST" enctype="multipart/form-data">
 
-    <!-- アップロードした画像。なければ表示しない -->
-    @isset ($image)
-    <div>
-        <img src="data:image/png;base64,<?= $image ?>">
-    
-    </div>
+  
+    <!-- 投稿表示エリア（編集するのはここ！） -->
+    @isset($images)
+      @foreach ($images as $image)
+
+        <img src="data:image/png;base64,<?= $image->image ?>"><br><br>
+      @endforeach
     @endisset
 
     <label for="photo">画像ファイル:</label>
