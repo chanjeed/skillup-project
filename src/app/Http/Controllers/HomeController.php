@@ -35,13 +35,9 @@ class HomeController extends Controller
       ]);
 
       if ($request->file('file')->isValid([])) {
-        //$image = base64_encode(file_get_contents($request->image->getRealPath()));
 
-        //Bbs::insert([
-          //"file" => $image
-        //]);
-          $path = $request->file->store('public');
-          return view('home')->with('filename', basename($path));
+        $image = base64_encode(file_get_contents($request->file->getRealPath()));
+        return view('home')->with('image', $image);
       } else {
           return redirect()
               ->back()

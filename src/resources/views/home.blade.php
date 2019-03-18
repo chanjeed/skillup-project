@@ -13,19 +13,15 @@
     <!-- アップロードした画像。なければ表示しない -->
     @isset ($image)
     <div>
-         <img src="data:image/png;base64,<?= image ?>">
-        <!--<img src="{{ asset('storage/' . $filename) }}">-->
+        <img src="data:image/png;base64,<?= $image ?>">
+    
     </div>
     @endisset
 
     <label for="photo">画像ファイル:</label>
-    <input type="file" class="form-control" name="image">
+    <input type="file" class="form-control" name="file">
     <br>
     <hr>
     {{ csrf_field() }}
     <button class="btn btn-success"> Upload </button>
 </form>
-$image = base64_encode(file_get_contents($request->image->getRealPath()));
-Bbs::insert([
-    "image" => $image
-]);
