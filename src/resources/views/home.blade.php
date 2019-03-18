@@ -10,12 +10,12 @@
 <!-- フォーム -->
 <form action="{{ url('upload') }}" method="POST" enctype="multipart/form-data">
 
-  
+
     <!-- 投稿表示エリア（編集するのはここ！） -->
     @isset($images)
       @foreach ($images as $image)
 
-        <img src="data:image/png;base64,<?= $image->image ?>"><br><br>
+        <img src="data:image/png;base64,<?= $image->image ?>" width="200" height="200"><br><br>
       @endforeach
     @endisset
 
