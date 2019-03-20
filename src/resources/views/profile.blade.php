@@ -12,14 +12,15 @@ margin-left : auto;
 text-align: center;
 }
 .username{
-  width:150px;
-  height:25px;
+  width:300px;
+  height:250px;
   margin-right: auto;
-  margin-top:1.5%;
+  margin-top: 1.5%;
   margin-bottom: 1.5%;
   color: dodgerblue;
   border-bottom: solid 3px dodgerblue;
   padding: 5px;
+
 }
 .delete-button{
 
@@ -80,16 +81,65 @@ text-align: center;
   width:100px;
 }
 
+.column-container {
+  float: left;
+  width: 50.0%;
+}
+
+.column-container2 {
+  float: right;
+  width: 40.0%;
+}
+
+.column-container3 {
+  float: right;
+  width: 15.0%;
+}
+
+.column-container4 {
+  float: left;
+  width: 33.33%;
+}
+
+
+.row-container{
+
+}
+
+/* Clear floats after the columns */
+.row-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 </style>
 <title>Profile</title>
 <link href="home.css" rel="stylesheet" type="text/css">
 <?php include( 'header.php'); ?>
 </head>
 <body>
+  <font size=5>
 
 <!-- 投稿表示エリア（編集するのはここ！） -->
-<div class="username"><p class="center"><?= $image_username ?><p></div>
-<img src="<?= (string)$icon ?>" width="300" height="300" position="relative">
+
+
+<div class="row-container">
+  <div class="column-container4">
+<img src="<?= $user->image ?>" width="300" height="300" position="relative">
+</div>
+  <div class="column-container4">
+<div class="username">
+
+  <h2 class="center" vertical-align="bottom"><br><br><?= $user->github_id ?></h2>
+
+</div>
+</div>
+<div class="column-container4">
+  <h2>Number of liked!</h2>
+</div>
+</div>
+
 
 <hr>
 <table>

@@ -29,9 +29,9 @@ class ProfileController extends Controller
 
         $images = Image::orderBy('id', 'desc')->where('username', $github_user->nickname)->get(); // 全データの取り出し
 
-        $icon = DB::select("select image from public.user where github_id = '$github_user->nickname'")->get();
+        $user = DB::select("select * from public.user where github_id = '$github_user->nickname'");
 
-        return view('profile',["image_username" => $github_user->nickname,"images"=>$images,"icon"=> $icon[0]]);
+        return view('profile',["images"=>$images,"user"=> $user[0]]);
     }
 
 

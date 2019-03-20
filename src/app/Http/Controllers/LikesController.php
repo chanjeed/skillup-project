@@ -45,8 +45,9 @@ class LikesController extends Controller
   public function profile() {
     $image_username = $_GET['image-username'];
     $images = Image::orderBy('id', 'desc')->where('username', $image_username)->get(); // 全データの取り出し
+    $user = DB::select("select * from public.user where github_id = '$image_username'");
 
-    return view('profile',["username" => $image_username,"images"=>$images]);
+    return view('profile',["user" => $user[0],"images"=>$images]);
 
   }
 
