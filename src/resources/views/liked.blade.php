@@ -134,6 +134,7 @@ text-align: center;
 </style>
 <title>Home</title>
 <link href="home.css" rel="stylesheet" type="text/css">
+
 <?php include( 'header.php'); ?>
 </head>
 <body>
@@ -153,8 +154,10 @@ text-align: center;
     <form action="{{ url('liked/profile') }}" method="GET" enctype="multipart/form-data" class="center">
      <button type="submit" name="image-username" value=<?=$likeduser->username?> class="center" >
     <img src="<?= $likeduser->image ?>" width="200" height="200" position="relative">
+
   </button>
   </form>
+
   </div>
 
   <div class="column-container">

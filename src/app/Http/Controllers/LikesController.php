@@ -53,6 +53,7 @@ class LikesController extends Controller
   }
 
   public function profile() {
+
     $image_username = $_GET['image-username'];
     $images = Image::orderBy('id', 'desc')->where('username', $image_username)->get(); // 全データの取り出し
     $user = DB::select("select * from public.user where github_id = '$image_username'");
@@ -65,9 +66,9 @@ class LikesController extends Controller
     $postId = $_GET["liked-users-button"];
     $likedusers = Like::orderBy('id', 'desc')->join('public.user', 'likes.username', '=', 'public.user.github_id')->where('likes.post_id', $postId)->select('likes.*', 'public.user.image')->get(); // 全データの取り出し
 
-    $image = Image::findOrFail($postId)->first();
+    $image = Image::where('id',$postId)->get();
 
-    return view('liked',["likedusers" => $likedusers,"image" => $image]);
+    return view('liked',["likedusers" => $likedusers,"image" => $image[0]]);
 
   }
 }
