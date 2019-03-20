@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
           $table->increments('id');
           $table->string('username');
           $table->string('comment');
-          $table->integer('like');
+          $table->integer('like')->default(0);
           $table->text('image'); // 画像に関する記述
           $table->timestamps();
         });

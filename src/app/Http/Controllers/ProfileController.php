@@ -17,6 +17,8 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
+
+
         $token = $request->session()->get('github_token', null);
 
         try {
@@ -25,10 +27,14 @@ class ProfileController extends Controller
           return redirect('login/github');
         }
 
-
         $images = Image::orderBy('id', 'desc')->where('username', $github_user->nickname)->get(); // 全データの取り出し
-        return view('profile',["username" => $github_user->nickname,"images"=>$images]);
+
+        $icon = DB::select("select image from public.user where github_id = '$github_user->nickname'")->get();
+
+        return view('profile',["image_username" => $github_user->nickname,"images"=>$images,"icon"=> $icon[0]]);
     }
+
+
 
 
 

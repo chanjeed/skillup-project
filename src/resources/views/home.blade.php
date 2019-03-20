@@ -11,6 +11,7 @@ margin-right: auto;
 margin-left : auto;
 text-align: center;
 }
+
 .username{
   width:150px;
   height:25px;
@@ -32,6 +33,14 @@ text-align: center;
   margin-bottom: 1.5%;
   padding: 5px;
 }
+.delete-button:hover {
+    background-color: #c25667;
+}
+
+.delete-button-a:hover {
+    color: #fff;
+}
+
 .like-button{
 
   width:50px;
@@ -43,6 +52,15 @@ text-align: center;
   margin-bottom: 1.5%;
   padding: 5px;
 }
+
+.like-button:hover {
+    background-color: #cc5aa5;
+}
+
+.like-button-a:hover {
+    color: #fff;
+}
+
 .post-container {
 
   width:600px;
@@ -55,6 +73,33 @@ text-align: center;
   padding: 10px;
   border: 3px solid blue;
 }
+
+.column-container {
+  float: left;
+  width: 50.0%;
+}
+
+.column-container2 {
+  float: right;
+  width: 40.0%;
+}
+
+.column-container3 {
+  float: right;
+  width: 15.0%;
+}
+
+.row-container{
+
+}
+
+/* Clear floats after the columns */
+.row-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -83,8 +128,11 @@ text-align: center;
 </style>
 <title>Home</title>
 <link href="home.css" rel="stylesheet" type="text/css">
+<?php include( 'header.php'); ?>
 </head>
 <body>
+
+
 <!-- 投稿表示エリア（編集するのはここ！） -->
 <h1>Instragram もどき</h1>
 
@@ -92,36 +140,62 @@ text-align: center;
   @foreach ($images as $image)
 
 
-
     <div  class="post-container" >
-    <table>
 
-    <tr width="600">
-    <td width="300">
+
+    <div class="row-container">
+
+    <div class="column-container">
+      <form action="{{ url('home/profile') }}" method="GET" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <button type="submit" name="image-username" value=<?=$image->username?>>
         <div class="username"><p class="center"><?= $image->username ?><p></div>
-    </td>
-    <td width="300">
-        <div class="delete-button"><p class="center">Delete<p></div>
-    </td>
-    </tr>
+        </button>
+      </form>
+    </div>
+    <?php  if($image->username == $username) { ?>
 
+    <div class="column-container">
+        <form action="{{ url('home/delete') }}" method="POST" enctype="multipart/form-data" class="column-container2">
+          {{ csrf_field() }}
+          <button type="submit" name="delete-button" value=<?=$image->id?> >
+          <div class="delete-button"><a  class="delete-button-a"><p class="center">Delete<p></a></div>
+          </button>
+        </form>
+      </div>
+    <?php  } ?>
 
-    <tr width="600">
+  </div>
+
+    <div class="row-container">
     <div class="center"><img src="data:image/png;base64,<?= $image->image ?>" width="300" height="300" position="relative"></div>
-    </tr>
-    <tr width="600">
-    <div class="center"><p class="center"><?= $image->comment ?> <p></div>
-    </tr>
-    <tr width="600">
-    <td width="300">
-    <p class="left" style="color:orange;">Liked! users<p>
-    </td>
-    <td width="300">
-    <div class="like-button"><p class="center">Like!</p></div>
-    </td>
-    </tr>
+  </div>
 
-    </table>
+    <div class="row-container">
+    <div class="center"><p class="center"><?= $image->comment ?> <p></div>
+    </div>
+
+    <div class="row-container">
+    <div class="column-container">
+      <form action="{{ url('home/liked') }}" method="GET" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <button type="submit" name="liked-users-button" value=<?=$image->id?>>
+    <p class="left" style="color:orange;">Liked! users<p>
+    </button>
+  </form>
+</div>
+    <div class="column-container">
+        <form action="{{ url('home/like') }}" method="GET" enctype="multipart/form-data" class="column-container2">
+          {{ csrf_field() }}
+          <button type="submit" name="like-button" value=<?=$image->id?>>
+            Like!
+          </button>
+        </form>
+
+    </div>
+  </div>
+
+
     </div>
 
 
@@ -129,5 +203,24 @@ text-align: center;
 
   @endforeach
 @endisset
+
+<div class="row-container">
+  <div class="column-container">
+    
+    <form action="{{ url('home/back') }}" method="GET" enctype="multipart/form-data" class="column-container3">
+<button type="submit" name="page-button" value=back>
+  Back
+</button>
+</form>
+
+</div>
+<div class="column-container">
+  <form action="{{ url('home/next') }}" method="GET" enctype="multipart/form-data" class="column-container">
+<button type="submit" name="page-button" value=next>
+  Next
+</button>
+</form>
+</div>
+</div>
 
 </body>

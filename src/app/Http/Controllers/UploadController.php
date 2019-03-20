@@ -43,7 +43,7 @@ class UploadController extends Controller
           'comment' => 'max:200',
       ]);
 
-      if ($request->file('file')->isValid([]) && $request->string('comment')->isValid([]) ) {
+      if ($request->file('file')->isValid([])  ) {
 
         // 投稿内容の受け取って変数に入れる
         $image = base64_encode(file_get_contents($request->file->getRealPath()));

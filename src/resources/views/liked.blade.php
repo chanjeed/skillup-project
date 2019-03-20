@@ -11,6 +11,7 @@ margin-right: auto;
 margin-left : auto;
 text-align: center;
 }
+
 .username{
   width:150px;
   height:25px;
@@ -32,6 +33,14 @@ text-align: center;
   margin-bottom: 1.5%;
   padding: 5px;
 }
+.delete-button:hover {
+    background-color: #c25667;
+}
+
+.delete-button-a:hover {
+    color: #fff;
+}
+
 .like-button{
 
   width:50px;
@@ -43,6 +52,15 @@ text-align: center;
   margin-bottom: 1.5%;
   padding: 5px;
 }
+
+.like-button:hover {
+    background-color: #cc5aa5;
+}
+
+.like-button-a:hover {
+    color: #fff;
+}
+
 .post-container {
 
   width:600px;
@@ -81,36 +99,21 @@ text-align: center;
 }
 
 </style>
-<title>Profile</title>
+<title>Home</title>
 <link href="home.css" rel="stylesheet" type="text/css">
 <?php include( 'header.php'); ?>
 </head>
 <body>
-
 <!-- 投稿表示エリア（編集するのはここ！） -->
-<div class="username"><p class="center"><?= $image_username ?><p></div>
-<img src="<?= (string)$icon ?>" width="300" height="300" position="relative">
+<h1>Liked users</h1>
 
-<hr>
-<table>
-@isset($images)
-  @foreach ($images as $image)
+<?=$likedusers?>
+@isset($likedusers)
+  @foreach ($likedusers as $likeduser)
 
-
-
-
-    <td width="300">
-    <div class="center"><img src="data:image/png;base64,<?= $image->image ?>" width="300" height="300" position="relative"></div>
-    </td>
-
-
-
-
-
-
-
+    <?=$likeduser->post_id?> <?=$likeduser->username?> <br><br>
 
   @endforeach
 @endisset
-  </table>
+
 </body>

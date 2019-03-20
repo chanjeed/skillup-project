@@ -60,14 +60,21 @@ class LoginController extends Controller
    public function handleProviderCallback(Request $request)// 追加！
    {
      $github_user = Socialite::driver('github')->user();
-
+      $icon = $github_user->getAvatar();
       $now = date("Y/m/d H:i:s");
       $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
       if (empty($app_user)) {
-          DB::insert('insert into public.user (github_id, created_at, updated_at) values (?, ?, ?)', [$github_user->user['login'], $now, $now]);
+          DB::insert('insert into public.user (github_id, created_at, updated_at,image) values (?, ?, ?,?)', [$github_user->user['login'], $now, $now,$icon]);
       }
       $request->session()->put('github_token', $github_user->token);
 
       return redirect('home');
    }
+   // ログアウト
+    public function logout()
+    {
+
+        Auth::logout();
+        return redirect('/');
+    }
 }

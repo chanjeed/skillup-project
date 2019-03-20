@@ -17,8 +17,8 @@ class CreateTable extends Migration
           $table->increments('id');
           $table->string('name')->nullable();
           $table->string('comment')->nullable();
+          $table->text('image');
           $table->string('github_id');
-          $table->text('image'); // 画像に関する記述
           $table->timestamps();
       });
   }

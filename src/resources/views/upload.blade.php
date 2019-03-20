@@ -1,3 +1,7 @@
+<header>
+<?php include( 'header.php'); ?>
+</header>
+<body>
 <!-- エラーメッセージ。なければ表示しない -->
 @if ($errors->any())
 <ul>
@@ -8,11 +12,7 @@
 @endif
 
 <!-- フォーム -->
-<form action="{{ url('upload') }}" method="POST" enctype="multipart/form-data">
-
-
-
-
+<form action="{{ url('upload') }}" method="POST" enctype="multipart/form-data" class="center">
     <label for="photo">画像ファイル:</label>
     <input type="file" class="form-control" name="file">
     <br>
@@ -24,3 +24,4 @@
     {{ csrf_field() }}
     <button class="btn btn-success"> Upload </button>
 </form>
+</body>
