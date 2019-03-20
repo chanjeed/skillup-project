@@ -30,8 +30,8 @@ class ProfileController extends Controller
         $images = Image::orderBy('id', 'desc')->where('username', $github_user->nickname)->get(); // 全データの取り出し
 
         $user = DB::select("select * from public.user where github_id = '$github_user->nickname'");
-
-        return view('profile',["images"=>$images,"user"=> $user[0]]);
+        $number_liked = Image::where('username',$github_user->nickname)->sum("like");
+        return view('profile',["images"=>$images,"user"=> $user[0]],"number_liked"=>$like);
     }
 
 

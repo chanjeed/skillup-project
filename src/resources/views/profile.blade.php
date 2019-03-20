@@ -136,7 +136,8 @@ text-align: center;
 </div>
 </div>
 <div class="column-container4">
-  <h2>Number of liked!</h2>
+  <h2>Number of liked!</h2><br><br>
+  <h2 style="color: deeppink" class="center"><?= $number_liked ?></h2>
 </div>
 </div>
 

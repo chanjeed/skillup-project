@@ -185,10 +185,20 @@ text-align: center;
   </form>
 </div>
     <div class="column-container">
-        <form action="{{ url('home/like') }}" method="GET" enctype="multipart/form-data" class="column-container2">
+        <form action="{{ url('home/like') }}" method="POST" enctype="multipart/form-data" class="column-container2">
           {{ csrf_field() }}
           <button type="submit" name="like-button" value=<?=$image->id?>>
-            Like!
+            <?php
+            $like = DB::select('select * from likes where post_id = ? and username = ?', [$image->id,$username]);
+            if(empty($like)){
+              echo "Like!";
+            }
+            else{
+              echo "<font color='deeppink'>Liked</font>";
+            }
+            ?>
+
+
           </button>
         </form>
 
@@ -206,7 +216,7 @@ text-align: center;
 
 <div class="row-container">
   <div class="column-container">
-    
+
     <form action="{{ url('home/back') }}" method="GET" enctype="multipart/form-data" class="column-container3">
 <button type="submit" name="page-button" value=back>
   Back

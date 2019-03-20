@@ -37,6 +37,7 @@ Route::get('/profile', 'ProfileController@index');
 
 
 Route::post('/home/delete', 'LikesController@delete');
-Route::get('/home/like', 'LikesController@like');
+Route::post('/home/like', 'LikesController@like');
 Route::get('/home/profile', 'LikesController@profile');
+Route::get('/liked/profile', 'LikesController@profile');
 Route::get('/home/liked', 'LikesController@likedusers');
