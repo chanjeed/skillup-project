@@ -137,7 +137,16 @@ text-align: center;
 <h1>Instragram もどき</h1>
 
 @isset($images)
-  @foreach ($images as $image)
+<?php
+$start =0;
+$end = 10;
+if(sizeof($images)<10){
+  $end=sizeof($images);
+}
+for ($i = $start; $i < $end; $i++) {
+
+?>
+
 
 
     <div  class="post-container" >
@@ -148,17 +157,17 @@ text-align: center;
     <div class="column-container">
       <form action="{{ url('home/profile') }}" method="GET" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <button type="submit" name="image-username" value=<?=$image->username?>>
-        <div class="username"><p class="center"><?= $image->username ?><p></div>
+        <button type="submit" name="image-username" value=<?=$images[$i]->username?>>
+        <div class="username"><p class="center"><?= $images[$i]->username ?><p></div>
         </button>
       </form>
     </div>
-    <?php  if($image->username == $username) { ?>
+    <?php  if($images[$i]->username == $username) { ?>
 
     <div class="column-container">
         <form action="{{ url('home/delete') }}" method="POST" enctype="multipart/form-data" class="column-container2">
           {{ csrf_field() }}
-          <button type="submit" name="delete-button" value=<?=$image->id?> >
+          <button type="submit" name="delete-button" value=<?=$images[$i]->id?> >
           <div class="delete-button"><a  class="delete-button-a"><p class="center">Delete<p></a></div>
           </button>
         </form>
@@ -168,18 +177,18 @@ text-align: center;
   </div>
 
     <div class="row-container">
-    <div class="center"><img src="data:image/png;base64,<?= $image->image ?>" width="300" height="300" position="relative"></div>
+    <div class="center"><img src="data:image/png;base64,<?= $images[$i]->image ?>" width="300" height="300" position="relative"></div>
   </div>
 
     <div class="row-container">
-    <div class="center"><p class="center"><?= $image->comment ?> <p></div>
+    <div class="center"><p class="center"><?= $images[$i]->comment ?> <p></div>
     </div>
 
     <div class="row-container">
     <div class="column-container">
       <form action="{{ url('home/liked') }}" method="GET" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <button type="submit" name="liked-users-button" value=<?=$image->id?>>
+        <button type="submit" name="liked-users-button" value=<?=$images[$i]->id?>>
     <p class="left" style="color:orange;">Liked! users<p>
     </button>
   </form>
@@ -187,9 +196,9 @@ text-align: center;
     <div class="column-container">
         <form action="{{ url('home/like') }}" method="POST" enctype="multipart/form-data" class="column-container2">
           {{ csrf_field() }}
-          <button type="submit" name="like-button" value=<?=$image->id?>>
+          <button type="submit" name="like-button" value=<?=$images[$i]->id?>>
             <?php
-            $like = DB::select('select * from likes where post_id = ? and username = ?', [$image->id,$username]);
+            $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
             if(empty($like)){
               echo "Like!";
             }
@@ -209,27 +218,49 @@ text-align: center;
     </div>
 
 
+    <?php
 
+  }
 
-  @endforeach
+    ?>
+
 @endisset
 
 <div class="row-container">
   <div class="column-container">
+    <?php
+    if($start>0){
 
+
+    ?>
     <form action="{{ url('home/back') }}" method="GET" enctype="multipart/form-data" class="column-container3">
 <button type="submit" name="page-button" value=back>
   Back
 </button>
 </form>
+<?php
 
+}
+
+?>
 </div>
+
 <div class="column-container">
+  <?php
+  if(sizeof($images)>$end){
+
+
+  ?>
   <form action="{{ url('home/next') }}" method="GET" enctype="multipart/form-data" class="column-container">
 <button type="submit" name="page-button" value=next>
   Next
 </button>
 </form>
+  <?php
+
+  }
+
+  ?>
 </div>
 </div>
 
