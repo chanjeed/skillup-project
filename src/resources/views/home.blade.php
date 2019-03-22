@@ -129,6 +129,33 @@ text-align: center;
 <title>Home</title>
 <link href="home.css" rel="stylesheet" type="text/css">
 <?php include( 'header.php'); ?>
+
+<script type="text/javascript">
+function LikeButton(postId)
+{
+
+        //xmlhttp.open("POST", "../test_java.php", false);
+        //xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //var data="data="+moji;
+        //xmlhttp.send(data);
+        //var res=xmlhttp.responseText;
+        var btn = document.getElementById( "test-button");
+        $.get("like.php?id="+postId+"&username="+<?php $username?>);
+
+
+        if(btn.value=="Like!"){
+          btn.value = id;
+          btn.style.color = "deeppink";
+
+        }
+        else{
+          btn.value = "Like!";
+          btn.style.color = "black";
+        }
+
+}
+</script>
+
 </head>
 <body>
 
@@ -196,7 +223,7 @@ for ($i = $start; $i < $end; $i++) {
     <div class="column-container">
         <form action="{{ url('home/like') }}" method="POST" enctype="multipart/form-data" class="column-container2">
           {{ csrf_field() }}
-          <button type="submit" name="like-button" value=<?=$images[$i]->id?>>
+          <button type="submit" name="like-button" value=<?=$images[$i]->id?> >
             <?php
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
             if(empty($like)){
@@ -228,40 +255,46 @@ for ($i = $start; $i < $end; $i++) {
 
 <div class="row-container">
   <div class="column-container">
-    <?php
-    if($start>0){
 
+    <form action="{{ url('home/back') }}" method="POST" enctype="multipart/form-data" class="column-container3">
+      {{ csrf_field() }}
+      &emsp;&emsp;
+<button type="submit" name="page-button" value=back <?php if($start==0){ ?> style="display: none" <?php } ?>>
 
-    ?>
-    <form action="{{ url('home/back') }}" method="GET" enctype="multipart/form-data" class="column-container3">
-<button type="submit" name="page-button" value=back>
   Back
 </button>
 </form>
-<?php
 
-}
-
-?>
 </div>
 
 <div class="column-container">
-  <?php
-  if(sizeof($images)>$end){
 
+  <form action="{{ url('home/next') }}" method="POST" enctype="multipart/form-data" class="column-container" >
+    {{ csrf_field() }}
+    @isset($offset)
+    <input type="hidden" name="offset" value="{{ $_GET['offset'] }}">
+    @endisset
+<button type="submit" name="page-button" value=next <?php if(sizeof($images)<=$end){ ?> style="display: none" <?php } ?>>
 
-  ?>
-  <form action="{{ url('home/next') }}" method="GET" enctype="multipart/form-data" class="column-container">
-<button type="submit" name="page-button" value=next>
   Next
+
 </button>
+&emsp;&emsp;
 </form>
-  <?php
 
-  }
 
-  ?>
+
+<?php $id=5;?>
+<input onclick='LikeButton(<?= $id?>)' type="button" value="Like!" id="test-button" />
+
+
+
+
 </div>
 </div>
+
+@isset($offset)
+<h1>Hello</h1>
+@endisset
 
 </body>

@@ -19,7 +19,7 @@ Route::get('/bbs', 'BbsController@index');
 
 Route::post('/bbs', 'BbsController@create');
 
-Route::get('/home', 'Github\GithubController@top');
+Route::get('/github', 'Github\GithubController@top');
 Route::post('github/issue', 'Github\GithubController@createIssue');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
@@ -38,6 +38,8 @@ Route::get('/profile', 'ProfileController@index');
 
 Route::post('/home/delete', 'LikesController@delete');
 Route::post('/home/like', 'LikesController@like');
+Route::post('/home/next', 'NextController@next');
+Route::post('/home/back', 'NextController@back');
 Route::get('/home/profile', 'LikesController@profile');
 Route::get('/liked/profile', 'LikesController@profile');
 Route::get('/home/liked', 'LikesController@likedusers');

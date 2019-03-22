@@ -101,6 +101,12 @@ text-align: center;
   width: 33.33%;
 }
 
+.column-container5 {
+  float: left;
+  width: 16.67%;
+}
+
+
 
 .row-container{
 
@@ -143,18 +149,22 @@ text-align: center;
 
 
 <hr>
-<table>
+<div class="row-container">
 @isset($images)
   @foreach ($images as $image)
 
 
 
 
-    <td width="300">
+    <div class="column-container5">
     <div class="center"><img src="data:image/png;base64,<?= $image->image ?>" width="300" height="300" position="relative"></div>
-    </td>
+    </div>
+    @if($loop->iteration%5==0)
+    </div>
+    <br>
+    <div class="row-container">
 
-
+    @endif
 
 
 
@@ -163,5 +173,5 @@ text-align: center;
 
   @endforeach
 @endisset
-  </table>
+</div>
 </body>

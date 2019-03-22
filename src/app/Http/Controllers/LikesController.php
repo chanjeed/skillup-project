@@ -47,7 +47,7 @@ class LikesController extends Controller
     $postId = $request->input("delete-button");
     Image::findOrFail($postId)->delete();
     //$post->like_by()->findOrFail($likeId)->delete();
-
+    Like::where('post_id',$postId)->delete();
     return redirect('home');
 
   }
