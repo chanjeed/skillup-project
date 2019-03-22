@@ -162,12 +162,19 @@ function LikeButton(postId)
 
 <!-- 投稿表示エリア（編集するのはここ！） -->
 <h1>Instragram もどき</h1>
-
-@isset($images)
 <?php
-$start =0;
-$end = 10;
-if(sizeof($images)<10){
+if(!isset($_GET['page-button'])){ // $_GET['page_id'] はURLに渡された現在のページ数
+    $start = 0; // 設定されてない場合は1ページ目にする
+
+}else{
+    $start = $_GET['page-button'];
+}
+?>
+@isset($images)
+
+<?php
+$end = $start+10;
+if(sizeof($images)<$end){
   $end=sizeof($images);
 }
 for ($i = $start; $i < $end; $i++) {
@@ -256,10 +263,11 @@ for ($i = $start; $i < $end; $i++) {
 <div class="row-container">
   <div class="column-container">
 
-    <form action="{{ url('home/back') }}" method="POST" enctype="multipart/form-data" class="column-container3">
+    <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3">
       {{ csrf_field() }}
       &emsp;&emsp;
-<button type="submit" name="page-button" value=back <?php if($start==0){ ?> style="display: none" <?php } ?>>
+
+<button type="submit" name="page-button" value="<?php echo $start-10;?>" <?php if($start==0){ ?> style="display: none" <?php } ?>>
 
   Back
 </button>
@@ -269,12 +277,9 @@ for ($i = $start; $i < $end; $i++) {
 
 <div class="column-container">
 
-  <form action="{{ url('home/next') }}" method="POST" enctype="multipart/form-data" class="column-container" >
+  <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container" >
     {{ csrf_field() }}
-    @isset($offset)
-    <input type="hidden" name="offset" value="{{ $_GET['offset'] }}">
-    @endisset
-<button type="submit" name="page-button" value=next <?php if(sizeof($images)<=$end){ ?> style="display: none" <?php } ?>>
+    <button type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if(sizeof($images)<=$end){ ?> style="display: none" <?php } ?>>
 
   Next
 
@@ -293,8 +298,5 @@ for ($i = $start; $i < $end; $i++) {
 </div>
 </div>
 
-@isset($offset)
-<h1>Hello</h1>
-@endisset
 
 </body>
