@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 use Auth;
 
-class LoginController extends Controller 
+class LoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ class LoginController extends Controller
       }
       $request->session()->put('github_token', $github_user->token);
 
-      Auth::login($app_user[0], true);
+      //Auth::login($app_user[0], true);
 
 
       return redirect('home');
