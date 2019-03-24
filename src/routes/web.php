@@ -45,9 +45,3 @@ Route::get('/liked/profile', 'LikesController@profile');
 Route::get('/home/liked', 'LikesController@likedusers');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
