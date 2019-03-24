@@ -9,7 +9,7 @@ http://skillup-chanjeed.herokuapp.com
              - いいね機能
              - Back/Nextボタン
              - Delete機能
-             - いいねしたユーザ一覧画面に遷移するボタン
+             - いいねしたユーザ一覧画面に遷移するボタン(ハートの隣)
       - Upload画面
       - Profile画面
       - いいねしたユーザ一覧画面
@@ -20,6 +20,7 @@ http://skillup-chanjeed.herokuapp.com
       
 ### - 工夫したところ 
       - 画像が表示できる
+      - いいねしたユーザーの数をいいねボタンの隣に表示するようにした
       - いいねしたユーザ一覧画面に画像も表示する
       - /profile にアクセスすると自分のProfile画面に遷移する
       - レイアウトをできるだけ奇麗にした
