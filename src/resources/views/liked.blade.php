@@ -151,11 +151,9 @@ text-align: center;
 
 <div class="row-container">
   <div class="column-container">
-    <form action="{{ url('liked/profile') }}" method="GET" enctype="multipart/form-data" class="center">
-     <button type="submit" name="image-username" value=<?=$likeduser->username?> class="center" >
-    <img src="<?= $likeduser->image ?>" width="200" height="200" position="relative">
-
-  </button>
+    <form action="{{ url('liked/profile') }}" method="GET"  class="center">
+       <input type="hidden" name="image-username" value="<?=$likeduser->username?>"  >
+      <input type="image" src="<?= $likeduser->image ?>"  name="image-username" value="<?=$likeduser->username?>"  width="200" height="200" position="relative">
   </form>
 
   </div>
