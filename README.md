@@ -27,8 +27,10 @@ http://skillup-chanjeed.herokuapp.com
 ### - 難しかったところ 
       - herokuに公開する
       - 変数の受け渡し方(GET/POST)
-      - ログイン機能
+      - ログイン機能/ログアウト機能
 
-### - 追加した機能について説明（あれば） 
+### - 追加した機能について説明（あれば）
+    　- Home画面にFirst/Lastボタンを追加した
       
 ### - その他（あれば）
+    　- Herokuでは500 server errorのエラーが出ています

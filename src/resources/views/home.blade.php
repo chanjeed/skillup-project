@@ -84,10 +84,16 @@ text-align: center;
   width: 40.0%;
 }
 
-.column-container3 {
+.column-container3l {
+  float: left;
+  width: 15.0%;
+}
+
+.column-container3r {
   float: right;
   width: 15.0%;
 }
+
 
 .row-container{
 
@@ -130,31 +136,6 @@ text-align: center;
 <link href="home.css" rel="stylesheet" type="text/css">
 <?php include( 'header.php'); ?>
 
-<script type="text/javascript">
-function LikeButton(postId)
-{
-
-        //xmlhttp.open("POST", "../test_java.php", false);
-        //xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //var data="data="+moji;
-        //xmlhttp.send(data);
-        //var res=xmlhttp.responseText;
-        var btn = document.getElementById( "test-button");
-        $.get("like.php?id="+postId+"&username="+<?php $username?>);
-
-
-        if(btn.value=="Like!"){
-          btn.value = id;
-          btn.style.color = "deeppink";
-
-        }
-        else{
-          btn.value = "Like!";
-          btn.style.color = "black";
-        }
-
-}
-</script>
 
 </head>
 <body>
@@ -262,8 +243,7 @@ for ($i = $start; $i < $end; $i++) {
 
 <div class="row-container">
   <div class="column-container">
-
-    <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3">
+    <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3r">
       {{ csrf_field() }}
       &emsp;&emsp;
 
@@ -272,12 +252,25 @@ for ($i = $start; $i < $end; $i++) {
   Back
 </button>
 </form>
+    <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3r">
+      {{ csrf_field() }}
+
+
+    <button type="submit" name="page-button" value=0 <?php if($start<=10 ){ ?> style="display: none" <?php } ?>>
+
+    First
+
+    </button>
+
+    </form>
+
+
 
 </div>
 
 <div class="column-container">
 
-  <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container" >
+  <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3l" >
     {{ csrf_field() }}
     @isset($images)
     <button type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if(sizeof($images)<=$end){ ?> style="display: none" <?php } ?>>
@@ -286,14 +279,19 @@ for ($i = $start; $i < $end; $i++) {
 
 </button>
 @endisset($images)
-&emsp;&emsp;
+
 </form>
 
+<form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3l" >
+  {{ csrf_field() }}
+  @isset($images)
+  <button type="submit" name="page-button" value="<?php echo sizeof($images)-(sizeof($images)%10);?>" <?php if(sizeof($images)<=$end+10){ ?> style="display: none" <?php } ?>>
 
+Last
 
-<?php $id=5;?>
-<input onclick='LikeButton(<?= $id?>)' type="button" value="Like!" id="test-button" />
-
+</button>
+@endisset($images)
+</form>
 
 
 
