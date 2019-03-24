@@ -32,6 +32,7 @@ http://skillup-chanjeed.herokuapp.com
 
 ### - 追加した機能について説明（あれば）
     　- Home画面にFirst/Lastボタンを追加した
-      
+      - Profile画面から画像をクリックするとその画像の投稿に遷移する。Back to profileボタンでProfileの画面に戻ることができる。
+
 ### - その他（あれば）
     　- Herokuでは500 server errorのエラーが出ています

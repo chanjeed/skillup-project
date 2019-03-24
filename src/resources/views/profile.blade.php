@@ -157,7 +157,14 @@ text-align: center;
 
 
     <div class="column-container5">
-    <div class="center"><img src="data:image/png;base64,<?= $image->image ?>" width="300" height="300" position="relative"></div>
+    <div class="center">
+      <form action="{{ url('home/profile/image') }}" method="GET"  class="center">
+         <input type="hidden" name="image-id" value="<?=$image->id?>"  >
+        <input type="image" src="data:image/png;base64,<?= $image->image ?>" width="300" height="300" position="relative">
+    </form>
+
+
+    </div>
     </div>
     @if($loop->iteration%5==0)
     </div>
