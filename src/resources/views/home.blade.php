@@ -94,6 +94,11 @@ text-align: center;
   width: 15.0%;
 }
 
+.column-container4r {
+  float: right;
+  width: 5.0%;
+}
+
 
 .row-container{
 
@@ -200,16 +205,22 @@ for ($i = $start; $i < $end; $i++) {
     </div>
 
     <div class="row-container">
-    <div class="column-container">
-      <form action="{{ url('home/liked') }}" method="GET" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <button type="submit" name="liked-users-button" value=<?=$images[$i]->id?>>
-    <p class="left" style="color:orange;">Liked! users<p>
-    </button>
-  </form>
+    <div class="column-container3l">
+      <!-- left-->
 </div>
-    <div class="column-container">
-        <form action="{{ url('home/like') }}" method="POST"  class="column-container2">
+    <div class="column-container4r">
+
+
+        <form action="{{ url('home/liked') }}" method="GET" >
+          {{ csrf_field() }}
+
+          <button type="submit" name="liked-users-button" value=<?=$images[$i]->id?>>
+            <h3 style="color: deeppink"><?=$images[$i]->like?></h3>
+        </button>
+        </form>
+      </div>
+    <div class="column-container3r">
+        <form action="{{ url('home/like') }}" method="POST"  >
           {{ csrf_field() }}
 
             <input type="hidden" name="like-button" value=<?=$images[$i]->id?>   >
@@ -225,9 +236,8 @@ for ($i = $start; $i < $end; $i++) {
             }
             ?>
 
-
-
         </form>
+      </div>
 
     </div>
   </div>
