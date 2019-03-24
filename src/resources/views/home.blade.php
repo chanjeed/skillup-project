@@ -209,21 +209,24 @@ for ($i = $start; $i < $end; $i++) {
   </form>
 </div>
     <div class="column-container">
-        <form action="{{ url('home/like') }}" method="POST" enctype="multipart/form-data" class="column-container2">
+        <form action="{{ url('home/like') }}" method="POST"  class="column-container2">
           {{ csrf_field() }}
-          <button type="submit" name="like-button" value=<?=$images[$i]->id?> >
+
+            <input type="hidden" name="like-button" value=<?=$images[$i]->id?>   >
+
+
             <?php
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
             if(empty($like)){
-              echo "Like!";
+              echo "<input type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'>";
             }
             else{
-              echo "<font color='deeppink'>Liked</font>";
+              echo "<input type='image' src='https://www.img.in.th/images/e975130e39ea820e64c753a868ce4b00.png' width='75' height='75' position='relative'>";
             }
             ?>
 
 
-          </button>
+
         </form>
 
     </div>

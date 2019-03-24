@@ -153,7 +153,7 @@ text-align: center;
   <div class="column-container">
     <form action="{{ url('liked/profile') }}" method="GET"  class="center">
        <input type="hidden" name="image-username" value="<?=$likeduser->username?>"  >
-      <input type="image" src="<?= $likeduser->image ?>"  name="image-username" value="<?=$likeduser->username?>"  width="200" height="200" position="relative">
+      <input type="image" src="<?= $likeduser->image ?>"   width="200" height="200" position="relative">
   </form>
 
   </div>
