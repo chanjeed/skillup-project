@@ -10,7 +10,9 @@ use Illuminate\Http\Request;// 追加！
 
 use Illuminate\Support\Facades\DB;
 
-class LoginController extends Controller
+use Auth;
+
+class LoginController extends Controller 
 {
     /*
     |--------------------------------------------------------------------------
@@ -65,16 +67,20 @@ class LoginController extends Controller
       $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
       if (empty($app_user)) {
           DB::insert('insert into public.user (github_id, created_at, updated_at,image) values (?, ?, ?,?)', [$github_user->user['login'], $now, $now,$icon]);
+          $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
       }
       $request->session()->put('github_token', $github_user->token);
+
+      Auth::login($app_user[0], true);
+
 
       return redirect('home');
    }
    // ログアウト
+
     public function logout()
     {
-
         Auth::logout();
-        return redirect('/');
+        return redirect('');
     }
 }

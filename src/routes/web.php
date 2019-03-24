@@ -24,6 +24,7 @@ Route::post('github/issue', 'Github\GithubController@createIssue');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
+
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::post('user', 'User\UserController@updateUser');
@@ -42,3 +43,11 @@ Route::post('/home/like', 'LikesController@like');
 Route::get('/home/profile', 'LikesController@profile');
 Route::get('/liked/profile', 'LikesController@profile');
 Route::get('/home/liked', 'LikesController@likedusers');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
