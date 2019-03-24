@@ -38,9 +38,11 @@ class LikesController extends Controller
         Image::findOrFail($postId)->decrement('like');
       }
 
+      $start = $request->input("start");
 
 
-      return redirect('home');
+      return redirect('home?page-button='.$start);
+
   }
 
   public function delete(Request $request) {

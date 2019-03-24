@@ -148,7 +148,9 @@ text-align: center;
 
 <!-- 投稿表示エリア（編集するのはここ！） -->
 <h1>Instragram もどき</h1>
+
 <?php
+
 if(!isset($_GET['page-button'])){ // $_GET['page_id'] はURLに渡された現在のページ数
     $start = 0; // 設定されてない場合は1ページ目にする
 
@@ -156,6 +158,7 @@ if(!isset($_GET['page-button'])){ // $_GET['page_id'] はURLに渡された現�
     $start = $_GET['page-button'];
 }
 ?>
+
 @isset($images)
 
 <?php
@@ -224,7 +227,7 @@ for ($i = $start; $i < $end; $i++) {
           {{ csrf_field() }}
 
             <input type="hidden" name="like-button" value=<?=$images[$i]->id?>   >
-
+            <input type="hidden" name="start" value="<?= $start?>" >
 
             <?php
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
