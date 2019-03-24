@@ -279,11 +279,13 @@ for ($i = $start; $i < $end; $i++) {
 
   <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container" >
     {{ csrf_field() }}
+    @isset($images)
     <button type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if(sizeof($images)<=$end){ ?> style="display: none" <?php } ?>>
 
   Next
 
 </button>
+@endisset($images)
 &emsp;&emsp;
 </form>
 
