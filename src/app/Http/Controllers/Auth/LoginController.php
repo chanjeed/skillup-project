@@ -10,7 +10,7 @@ use Illuminate\Http\Request;// 追加！
 
 use Illuminate\Support\Facades\DB;
 
-use Auth;
+//use Auth;
 
 class LoginController extends Controller
 {
@@ -61,7 +61,7 @@ class LoginController extends Controller
     */
    public function handleProviderCallback(Request $request)// 追加！
    {
-     $github_user = Socialite::driver('github')->user();
+      $github_user = Socialite::driver('github')->user();
       $icon = $github_user->getAvatar();
       $now = date("Y/m/d H:i:s");
       $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
@@ -80,7 +80,7 @@ class LoginController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+        //Auth::logout();
         return redirect('');
     }
 }
