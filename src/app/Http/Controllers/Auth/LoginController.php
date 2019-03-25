@@ -69,7 +69,7 @@ class LoginController extends Controller
       $app_user = DB::select('select * from users where github_id = ?', [$github_user->user['login']]);
       if (empty($app_user)) {
           DB::insert('insert into users (github_id, created_at, updated_at,image) values (?, ?, ?,?)', [$github_user->user['login'], $now, $now,$icon]);
-          $app_user = DB::select('select * from users where github_id = ?', [$github_user->user['login']]);
+          
       }
       $request->session()->put('github_token', $github_user->token);
 
