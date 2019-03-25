@@ -41,10 +41,10 @@
   <a href="/home">
   <div class="column" style="border: 2px solid cyan;"><h2 class="center">Home</h2></div>
   </a>
-  <a href="../logout">
+  <a href="/logout">
   <div class="column" style="border: 2px solid cyan;"><h2 class="center">Logout</h2></div>
   </a>
-  <a href="../upload">
+  <a href="/upload">
   <div class="column" style="border: 2px solid cyan;"><h2 class="center">Upload</h2></div>
   </a>
 
