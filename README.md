@@ -1,10 +1,13 @@
 ## インスタグラムもどき
 
 これはオンラインスキルアップの課題です。
+
 画面仕様書 : https://team-lab.github.io/skillup/step2/insta_document.html
+
 herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
 
 ### - 画面仕様書の中で実装できたもの
+
       - Login画面
       - Home画面
              - いいね機能
@@ -19,10 +22,12 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
              - ログインしている・していない、の状態によって表示と動作が異なる
 
 ### - 画面仕様書の中で実装できなかったもの
+
       - ないと思います
 
 
 ### - 工夫したところ
+
       - 画像が表示できる
       - いいねしたユーザーの数をいいねボタンの隣に表示するようにした
       - いいねしたユーザ一覧画面に画像も表示する
@@ -32,6 +37,7 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
       - レイアウトをできるだけ奇麗にした
 
 ### - 難しかったところ
+
       - herokuに公開する
       - 変数の受け渡し方(GET/POST を使うか)
       - ログイン機能
@@ -39,8 +45,11 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
       　　　　 - ボタン/画像を正しい場所に表示させる
 
 ### - 追加した機能について説明（あれば）
+
       - Home画面にFirst（最初のページ）/Last（最後のページ）ボタンを追加した
-      - Profile画面から画像をクリックするとその画像の投稿が表示するビューに遷移する。Back to profileボタンでProfileの画面に戻ることができる
+      - Profile画面から画像をクリックするとその画像の投稿が表示するビューに遷移する。
+        Back to profileボタンでProfileの画面に戻ることができる
 
 ### - その他（あれば）
+
 　    - Herokuでは500 server errorのエラーが出ています
