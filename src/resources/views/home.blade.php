@@ -139,7 +139,12 @@ text-align: center;
 </style>
 <title>Home</title>
 <link href="home.css" rel="stylesheet" type="text/css">
+@isset($username)
  <?php include( 'header.php'); ?>
+@endisset
+@empty($username)
+ <?php include( 'header_out.php'); ?>
+@endempty
 
 
 </head>
