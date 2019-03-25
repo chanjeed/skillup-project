@@ -38,7 +38,7 @@
 
   <div class="row">
 
-  <a href="../home">
+  <a href="<?=redirect('home');?>">
   <div class="column" style="border: 2px solid cyan;"><h2 class="center">Home</h2></div>
   </a>
   <a href="../logout">
