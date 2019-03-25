@@ -133,10 +133,15 @@ text-align: center;
 
 
 </style>
-<title>Home</title>
+<title>Liked users</title>
 <link href="home.css" rel="stylesheet" type="text/css">
 
-<?php include( 'header.php'); ?>
+<?php if(isset($username)): ?>
+ <?php include( 'header.php'); ?>
+<?php endif; ?>
+<?php if(empty($username)): ?>
+ <?php include( 'header_out.php'); ?>
+<?php endif; ?>
 </head>
 <body>
 <!-- 投稿表示エリア（編集するのはここ！） -->

@@ -52,4 +52,4 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
 
 ### - その他（あれば）
 
-　    - Herokuでは500 server errorのエラーが出ています
+      - Herokuでは500 server errorのエラーが出ています
