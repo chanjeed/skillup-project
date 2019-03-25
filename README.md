@@ -1,7 +1,7 @@
 ## インスタグラムもどき
 
 これはオンラインスキルアップの課題です。
-http://skillup-chanjeed.herokuapp.com
+http://skillup-chanjeed.herokuapp.com/home
 
 ### - 画面仕様書の中で実装できたもの
       - Login画面
@@ -38,7 +38,7 @@ http://skillup-chanjeed.herokuapp.com
 
 ### - 追加した機能について説明（あれば）
       - Home画面にFirst（最初のページ）/Last（最後のページ）ボタンを追加した
-      - Profile画面から画像をクリックするとその画像の投稿が表示するビューに遷移する。Back to profileボタンでProfileの画面に戻ることができる。
+      - Profile画面から画像をクリックするとその画像の投稿が表示するビューに遷移する。Back to profileボタンでProfileの画面に戻ることができる
 
 ### - その他（あれば）
 　    - Herokuでは500 server errorのエラーが出ています
