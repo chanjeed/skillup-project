@@ -44,7 +44,7 @@
   <a href="/">
   <div class="column" style="border: 2px solid cyan;"><h2 class="center">Login</h2></div>
   </a>
-  <a href="upload">
+  <a href="/">
   <div class="column" style="border: 2px solid cyan;"><h2 class="center">Upload</h2></div>
   </a>
 

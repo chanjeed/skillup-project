@@ -18,17 +18,17 @@ class ImageController extends Controller
      */
     public function index(Request $request)
     {
+        $image_id = $_GET['image-id'];
 
+        $image = Image::findOrFail($image_id);
         $token = $request->session()->get('github_token', null);
 
         try {
             $github_user = Socialite::driver('github')->userFromToken($token);
         } catch (\Exception $e) {
-            return redirect('login/github');
+            return view('image',["image"=>$image]);
         }
-        $image_id = $_GET['image-id'];
 
-        $image = Image::findOrFail($image_id);
 
 
         return view('image',["image"=>$image,"username"=>$github_user->nickname]);
@@ -47,6 +47,7 @@ class ImageController extends Controller
           } catch (\Exception $e) {
           return redirect('login/github');
         }
+
         $username = $github_user->nickname;
 
         $now = date("Y/m/d H:i:s");
@@ -60,8 +61,6 @@ class ImageController extends Controller
           Like::where('post_id',$postId)->where('username',$username)->delete();
           Image::findOrFail($postId)->decrement('like');
         }
-
-
 
 
         return redirect('home/profile/image?image-id='.$postId);

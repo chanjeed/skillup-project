@@ -15,8 +15,15 @@ class UploadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+      $token = $request->session()->get('github_token', null);
+
+      try {
+          $github_user = Socialite::driver('github')->userFromToken($token);
+      } catch (\Exception $e) {
+          return redirect('home');
+      }
         return view('upload');
     }
     /**
@@ -55,7 +62,7 @@ class UploadController extends Controller
         try {
             $github_user = Socialite::driver('github')->userFromToken($token);
         } catch (\Exception $e) {
-            return redirect('login/github');
+            return redirect('home');
         }
 
 

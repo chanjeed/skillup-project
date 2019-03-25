@@ -1,4 +1,5 @@
 <header>
+  <title>Upload</title>
 <?php include( 'header.php'); ?>
 </header>
 <body>

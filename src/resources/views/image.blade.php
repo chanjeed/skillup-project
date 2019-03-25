@@ -137,9 +137,14 @@ text-align: center;
 }
 
 </style>
-<title>Home</title>
+<title>Image</title>
 <link href="home.css" rel="stylesheet" type="text/css">
-<?php include( 'header.php'); ?>
+@isset($username)
+ <?php include( 'header.php'); ?>
+@endisset
+@empty($username)
+ <?php include( 'header_out.php'); ?>
+@endempty
 
 
 </head>
@@ -162,6 +167,7 @@ text-align: center;
         </button>
       </form>
     </div>
+    @isset($username)
     <?php  if($image->username == $username) { ?>
 
     <div class="column-container">
@@ -173,7 +179,7 @@ text-align: center;
         </form>
       </div>
     <?php  } ?>
-
+    @endisset
   </div>
 
     <div class="row-container">
@@ -205,7 +211,7 @@ text-align: center;
 
             <input type="hidden" name="like-button" value=<?=$image->id?>   >
 
-
+            @isset($username)
             <?php
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$image->id,$username]);
             if(empty($like)){
@@ -215,6 +221,12 @@ text-align: center;
               echo "<input type='image' src='https://www.img.in.th/images/e975130e39ea820e64c753a868ce4b00.png' width='75' height='75' position='relative'>";
             }
             ?>
+            @endisset
+            @empty($username)
+            <?php
+            echo "<a href='/login/github'><img  src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'></a>";
+            ?>
+            @endempty
 
         </form>
       </div>

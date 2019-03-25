@@ -10,7 +10,8 @@ use Illuminate\Http\Request;// 追加！
 
 use Illuminate\Support\Facades\DB;
 
-//use Auth;
+use Auth;
+use App\Model\User;
 
 class LoginController extends Controller
 {
@@ -59,28 +60,55 @@ class LoginController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
+
    public function handleProviderCallback(Request $request)// 追加！
    {
       $github_user = Socialite::driver('github')->user();
       $icon = $github_user->getAvatar();
       $now = date("Y/m/d H:i:s");
-      $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
+      $app_user = DB::select('select * from users where github_id = ?', [$github_user->user['login']]);
       if (empty($app_user)) {
-          DB::insert('insert into public.user (github_id, created_at, updated_at,image) values (?, ?, ?,?)', [$github_user->user['login'], $now, $now,$icon]);
-          $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
+          DB::insert('insert into users (github_id, created_at, updated_at,image) values (?, ?, ?,?)', [$github_user->user['login'], $now, $now,$icon]);
+          $app_user = DB::select('select * from users where github_id = ?', [$github_user->user['login']]);
       }
       $request->session()->put('github_token', $github_user->token);
 
-      //Auth::login($app_user[0], true);
+
 
 
       return redirect('home');
    }
+
    // ログアウト
 
     public function logout()
     {
-        //Auth::logout();
-        return redirect('');
+        session()->forget('github_token');
+        return redirect('/');
     }
+    /*
+
+    public function handleProviderCallback(Request $request){
+
+          $user = Socialite::driver('github')->user();
+
+        $authUser = $this->findOrCreateUser($user);
+        Auth::login($authUser, true);
+        $request->session()->put('github_token', $github_user->token);
+        return redirect('home');
+    }
+
+    private function findOrCreateUser($github_user){
+        $authUser = User::where('github_id', $github_user->user['login'])->first();
+        if ($authUser){
+            return $authUser;
+        }
+        return User::create([
+            'github_id' =>  $github_user->nickname,
+            'created_at' => date("Y/m/d H:i:s"),
+            'updated_at' => date("Y/m/d H:i:s"),
+            'image' => $github_user->getAvatar()
+        ]);
+    }
+    */
 }

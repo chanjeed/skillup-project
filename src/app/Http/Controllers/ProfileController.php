@@ -31,7 +31,7 @@ class ProfileController extends Controller
 
         $user = DB::select("select * from public.user where github_id = '$github_user->nickname'");
         $number_liked = Image::where('username',$github_user->nickname)->sum("like");
-        return view('profile',["images"=>$images,"user"=> $user[0]],"number_liked"=>$like);
+        return view('profile',["images"=>$images,"user"=> $user[0]],"number_liked"=>$like,"username"=>$github_user->nickname]);
     }
 
 

@@ -4,9 +4,10 @@
     <head>
         <meta charset="utf-8">
 
-        <title>ログイン画面</title>
+        <title>Login</title>
     </head>
     <body>
-        <a href="/login/github">githubアカウントでログイン</a>
+      <br><br><br>
+        <div align="center" ><h1><a href="/login/github">githubアカウントでログイン</a></h1></div>
     </body>
 </html>

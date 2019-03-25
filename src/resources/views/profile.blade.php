@@ -122,7 +122,12 @@ text-align: center;
 </style>
 <title>Profile</title>
 <link href="home.css" rel="stylesheet" type="text/css">
-<?php include( 'header.php'); ?>
+@isset($username)
+ <?php include( 'header.php'); ?>
+@endisset
+@empty($username)
+ <?php include( 'header_out.php'); ?>
+@endempty
 </head>
 <body>
   <font size=5>

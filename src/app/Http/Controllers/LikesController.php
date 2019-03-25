@@ -54,23 +54,43 @@ class LikesController extends Controller
 
   }
 
-  public function profile() {
+  public function profile(Request $request) {
 
     $image_username = $_GET['image-username'];
     $images = Image::orderBy('id', 'desc')->where('username', $image_username)->get(); // 全データの取り出し
     $user = DB::select("select * from public.user where github_id = '$image_username'");
     $number_liked = Image::where('username',$image_username)->sum("like");
-    return view('profile',["user" => $user[0],"images"=>$images,"number_liked"=>$number_liked]);
+
+    $token = $request->session()->get('github_token', null);
+
+    try {
+        $github_user = Socialite::driver('github')->userFromToken($token);
+    } catch (\Exception $e) {
+        //return redirect('login/github');
+        return view('profile',["user" => $user[0],"images"=>$images,"number_liked"=>$number_liked]);
+    }
+
+    return view('profile',["user" => $user[0],"images"=>$images,"number_liked"=>$number_liked,"username"=>$github_user->nickname]);
 
   }
 
-  public function likedusers() {
+  public function likedusers(Request $request) {
     $postId = $_GET["liked-users-button"];
     $likedusers = Like::orderBy('id', 'desc')->join('public.user', 'likes.username', '=', 'public.user.github_id')->where('likes.post_id', $postId)->select('likes.*', 'public.user.image')->get(); // 全データの取り出し
 
     $image = Image::where('id',$postId)->get();
 
-    return view('liked',["likedusers" => $likedusers,"image" => $image[0]]);
+    $token = $request->session()->get('github_token', null);
+
+    try {
+        $github_user = Socialite::driver('github')->userFromToken($token);
+    } catch (\Exception $e) {
+        //return redirect('login/github');
+        return view('liked',["likedusers" => $likedusers,"image" => $image[0]]);
+    }
+
+
+    return view('liked',["likedusers" => $likedusers,"image" => $image[0],"username"=>$github_user->nickname]);
 
   }
 }
