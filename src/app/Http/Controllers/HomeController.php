@@ -18,16 +18,21 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $likes = Like::all();
+        $images = Image::orderBy('id', 'desc')->get(); // 全データの取り出し
+
         $token = $request->session()->get('github_token', null);
 
         try {
             $github_user = Socialite::driver('github')->userFromToken($token);
         } catch (\Exception $e) {
-            return redirect('login/github');
+            //return redirect('login/github');
+            return view('home', ["images" => $images,"likes"=> $likes]); // homeにデータを渡す
         }
 
-        $likes = Like::all();
-        $images = Image::orderBy('id', 'desc')->get(); // 全データの取り出し
+
+
+
         return view('home', ["images" => $images,"likes"=> $likes,"username"=>$github_user->nickname]); // homeにデータを渡す
     }
 

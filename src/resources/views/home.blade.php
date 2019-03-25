@@ -185,6 +185,7 @@ for ($i = $start; $i < $end; $i++) {
         </button>
       </form>
     </div>
+    @isset($username)
     <?php  if($images[$i]->username == $username) { ?>
 
     <div class="column-container">
@@ -196,7 +197,7 @@ for ($i = $start; $i < $end; $i++) {
         </form>
       </div>
     <?php  } ?>
-
+    @endisset
   </div>
 
     <div class="row-container">
@@ -229,7 +230,9 @@ for ($i = $start; $i < $end; $i++) {
             <input type="hidden" name="like-button" value=<?=$images[$i]->id?>   >
             <input type="hidden" name="start" value="<?= $start?>" >
 
+            @isset($username)
             <?php
+
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
             if(empty($like)){
               echo "<input type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'>";
@@ -238,7 +241,12 @@ for ($i = $start; $i < $end; $i++) {
               echo "<input type='image' src='https://www.img.in.th/images/e975130e39ea820e64c753a868ce4b00.png' width='75' height='75' position='relative'>";
             }
             ?>
-
+            @endisset
+            @empty($username)
+            <?php
+            echo "<img href='/login/github' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'>";
+            ?>
+            @endempty
         </form>
       </div>
 
