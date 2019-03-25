@@ -294,7 +294,7 @@ for ($i = $start; $i < $end; $i++) {
   Next
 
 </button>
-@endisset($images)
+@endisset
 
 </form>
 
@@ -306,7 +306,7 @@ for ($i = $start; $i < $end; $i++) {
 Last
 
 </button>
-@endisset($images)
+@endisset
 </form>
 
 
