@@ -139,7 +139,7 @@ text-align: center;
 </style>
 <title>Home</title>
 <link href="home.css" rel="stylesheet" type="text/css">
-<?php include( 'header.php'); ?>
+ 
 
 
 </head>
