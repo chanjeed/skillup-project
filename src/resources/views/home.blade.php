@@ -244,7 +244,7 @@ for ($i = $start; $i < $end; $i++) {
             @endisset
             @empty($username)
             <?php
-            echo "<img href='/login/github' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'>";
+            echo "<a href='/login/github'><img  src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'></a>";
             ?>
             @endempty
         </form>
