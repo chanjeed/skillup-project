@@ -147,6 +147,8 @@ text-align: center;
 @endempty
 
 
+
+
 </head>
 <body>
 
@@ -167,11 +169,8 @@ if(!isset($_GET['page-button'])){ // $_GET['page_id'] はURLに渡された現�
 @isset($images)
 
 <?php
-$end = $start+10;
-if(sizeof($images)<$end){
-  $end=sizeof($images);
-}
-for ($i = $start; $i < $end; $i++) {
+$end=sizeof($images);
+for ($i = 0; $i < $end; $i++) {
 
 ?>
 
@@ -302,7 +301,7 @@ for ($i = $start; $i < $end; $i++) {
   <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3l" >
     {{ csrf_field() }}
     @isset($images)
-    <button type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if(sizeof($images)<=$end){ ?> style="display: none" <?php } ?>>
+    <button type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if($images_num<=$end){ ?> style="display: none" <?php } ?>>
 
   Next
 
@@ -314,7 +313,7 @@ for ($i = $start; $i < $end; $i++) {
 <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3l" >
   {{ csrf_field() }}
   @isset($images)
-  <button type="submit" name="page-button" value="<?php echo sizeof($images)-(sizeof($images)%10);?>" <?php if(sizeof($images)<=$end+10){ ?> style="display: none" <?php } ?>>
+  <button type="submit" name="page-button" value="<?php echo $images_num-($images_num%10);?>" <?php if($images_num<=$end+10){ ?> style="display: none" <?php } ?>>
 
 Last
 

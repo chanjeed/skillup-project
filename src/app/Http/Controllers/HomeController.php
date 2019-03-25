@@ -19,7 +19,16 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $likes = Like::all();
-        $images = Image::orderBy('id', 'desc')->get(); // 全データの取り出し
+
+        if(isset($_GET['page-button'])){
+          $start = $_GET['page-button'];
+        }
+        else{
+          $start=0;
+        }
+
+        $images = Image::orderBy('id', 'desc')->skip($start)->take(10)->get(); // 全データの取り出し
+        $images_num = Image::count();
 
         $token = $request->session()->get('github_token', null);
 
@@ -27,21 +36,16 @@ class HomeController extends Controller
             $github_user = Socialite::driver('github')->userFromToken($token);
         } catch (\Exception $e) {
             //return redirect('login/github');
-            return view('home', ["images" => $images,"likes"=> $likes]); // homeにデータを渡す
+            return view('home', ["images" => $images,"likes"=> $likes,"images_num"=>$images_num]); // homeにデータを渡す
         }
 
 
 
 
-        return view('home', ["images" => $images,"likes"=> $likes,"username"=>$github_user->nickname]); // homeにデータを渡す
+
+        return view('home', ["images" => $images,"likes"=> $likes,"username"=>$github_user->nickname,"images_num"=>$images_num]); // homeにデータを渡す
     }
 
-    public function show($id) {
-      $post = Image::findOrFail($id); // findOrFail 見つからなかった時の例外処理
 
-      $like = $post->likes()->where('user_id', Auth::user()->id)->first();
-
-      return view('home.show')->with(array('post' => $post, 'like' => $like));
-    }
 
 }
