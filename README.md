@@ -1,7 +1,8 @@
 ## インスタグラムもどき
 
 これはオンラインスキルアップの課題です。
-http://skillup-chanjeed.herokuapp.com/home
+画面仕様書 : https://team-lab.github.io/skillup/step2/insta_document.html
+herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
 
 ### - 画面仕様書の中で実装できたもの
       - Login画面
