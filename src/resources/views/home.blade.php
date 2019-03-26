@@ -9,7 +9,7 @@
 
 </style>
 <title>Home</title>
-<?php include( 'home.css'); ?>
+<link rel="stylesheet" href="{{ asset('/css/home.css') }}">
 @isset($username)
  <?php include( 'header.php'); ?>
 @endisset
@@ -55,8 +55,8 @@ for ($i = 0; $i < $end; $i++) {
     <div class="column-container">
       <form action="{{ url('home/profile') }}" method="GET" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <button type="submit" name="image-username" value=<?=$images[$i]->username?>>
-        <div class="username"><p class="center"><?= $images[$i]->username ?><p></div>
+        <button type="submit" name="image-username" value=<?=$images[$i]->username?> class="username_button">
+        <h2 class="center"><?= $images[$i]->username ?><h2>
         </button>
       </form>
     </div>
@@ -66,8 +66,8 @@ for ($i = 0; $i < $end; $i++) {
     <div class="column-container">
         <form action="{{ url('home/delete') }}" method="POST" enctype="multipart/form-data" class="column-container2">
           {{ csrf_field() }}
-          <button type="submit" name="delete-button" value=<?=$images[$i]->id?> >
-          <div class="delete-button"><a  class="delete-button-a"><p class="center">Delete<p></a></div>
+          <button class="delete_button" type="submit" name="delete-button" value=<?=$images[$i]->id?> >
+          <a  class="delete_button-a"><p class="center">Delete<p></a>
           </button>
         </form>
       </div>
@@ -93,7 +93,7 @@ for ($i = 0; $i < $end; $i++) {
         <form action="{{ url('home/liked') }}" method="GET" >
           {{ csrf_field() }}
 
-          <button type="submit" name="liked-users-button" value=<?=$images[$i]->id?>>
+          <button class="likedusers_button" type="submit" name="liked-users-button" value=<?=$images[$i]->id?>>
             <h3 style="color: deeppink"><?=$images[$i]->like?></h3>
         </button>
         </form>

@@ -6,12 +6,6 @@
 <head>
 <meta charset="utf-8">
 <style>
-h1 {
-border-bottom: solid 3px dodgerblue;
-margin-right: auto;
-margin-left : auto;
-text-align: center;
-}
 
 .username{
   width:100px;
@@ -22,91 +16,6 @@ text-align: center;
   color: dodgerblue;
   border-bottom: solid 3px dodgerblue;
   padding: 5px;
-}
-.delete-button{
-
-  width:80px;
-  height:25px;
-  background-color: #e26478;
-  border: 1px solid red;
-  margin-left : auto;
-  margin-top:1.5%;
-  margin-bottom: 1.5%;
-  padding: 5px;
-}
-.delete-button:hover {
-    background-color: #c25667;
-}
-
-.delete-button-a:hover {
-    color: #fff;
-}
-
-.like-button{
-
-  width:50px;
-  height:25px;
-  background-color: #e264b7;
-  border: 1px solid pink;
-  margin-left : auto;
-  margin-top:1.5%;
-  margin-bottom: 1.5%;
-  padding: 5px;
-}
-
-.like-button:hover {
-    background-color: #cc5aa5;
-}
-
-.like-button-a:hover {
-    color: #fff;
-}
-
-.post-container {
-
-  width:600px;
-  margin-right: auto;
-  margin-left : auto;
-  margin-top:1.5%;
-  margin-bottom: 1.5%;
-  background-color: #ddf2f4;
-  color: #000;
-  padding: 10px;
-  border: 3px solid blue;
-}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top:1.5%;
-  margin-bottom: 1.5%;
-  width: 50%;
-}
-
-.right {
-  display: block;
-  margin-left: auto;
-  margin-top:1.5%;
-  margin-bottom: 1.5%;
-  width:100px;
-}
-
-.left {
-  display: block;
-  margin-right: auto;
-  margin-top:1.5%;
-  margin-bottom: 1.5%;
-  width:100px;
-}
-
-.column-container {
-  float: left;
-  width: 50.0%;
-}
-
-.column-container2 {
-  float: right;
-  width: 40.0%;
 }
 
 .column-container3 {
@@ -120,21 +29,11 @@ text-align: center;
 }
 
 
-.row-container{
-
-}
-
-/* Clear floats after the columns */
-.row-container:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 
 </style>
 <title>Liked users</title>
-<link href="home.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<?php echo e(asset('/css/home.css')); ?>">
 
 <?php if(isset($username)): ?>
  <?php include( 'header.php'); ?>
@@ -144,6 +43,7 @@ text-align: center;
 <?php endif; ?>
 </head>
 <body>
+
 <!-- 投稿表示エリア（編集するのはここ！） -->
 <h1>Liked users</h1>
 
@@ -168,8 +68,8 @@ text-align: center;
   <form action="<?php echo e(url('liked/profile')); ?>" method="GET" enctype="multipart/form-data" class="center">
     <?php echo e(csrf_field()); ?>
 
-    <button type="submit" name="image-username" value=<?=$likeduser->username?> class="center" >
-    <div class="username" ><h2 class="center"><?= $likeduser->username ?><h2></div>
+    <button class="username_button" type="submit" name="image-username" value=<?=$likeduser->username?> class="center" >
+  <h2 class="center"><?= $likeduser->username ?><h2>
     </button>
   </form>
   </div>
