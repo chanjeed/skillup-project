@@ -31,7 +31,7 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
       - 画像が表示できる
       - いいねしたユーザーの数をいいねボタンの隣に表示するようにした
       - いいねしたユーザ一覧画面に画像も表示する
-      - http://skillup-chanjeed.herokuapp.com/home をログイン時にアクセスすると自分のProfile画面に遷移する
+      - http://skillup-chanjeed.herokuapp.com/profile をログイン時にアクセスすると自分のProfile画面に遷移する
       　　　　- 未ログイン時にアクセスすると、ログイン画面に遷移するようにした
       - いいねボタンは、未ログイン時に押下できない（非アクティブ）ではなく、ログイン画面に遷移するようにした
       - レイアウトをできるだけ奇麗にした(css)
