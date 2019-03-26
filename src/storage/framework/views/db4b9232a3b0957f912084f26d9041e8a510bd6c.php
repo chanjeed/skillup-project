@@ -180,7 +180,7 @@ for ($i = 0; $i < $end; $i++) {
     <?php echo e(csrf_field()); ?>
 
     <?php if(isset($images)): ?>
-    <button class="page_button" type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if($images_num<=$end){ ?> style="display: none" <?php } ?>>
+    <button class="page_button" type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if($images_num<=$start+10){ ?> style="display: none" <?php } ?>>
 
   Next
 
@@ -193,7 +193,7 @@ for ($i = 0; $i < $end; $i++) {
   <?php echo e(csrf_field()); ?>
 
   <?php if(isset($images)): ?>
-  <button class="page_button" type="submit" name="page-button" value="<?php echo $images_num-($images_num%10);?>" <?php if($images_num<=$end+10){ ?> style="display: none" <?php } ?>>
+  <button class="page_button" type="submit" name="page-button" value="<?php echo $images_num-($images_num%10);?>" <?php if($images_num<=$start+20){ ?> style="display: none" <?php } ?>>
 
 Last
 
