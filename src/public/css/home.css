@@ -154,3 +154,16 @@ text-align: center;
   background-color: #f49cca;
   color: white;
 }
+
+.page_button {
+  width:100px;
+  height:25px;
+  background-color: white;
+  color: dodgerblue;
+  border: 2px solid #008CBA;
+}
+
+.page_button:hover {
+  background-color: #008CBA;
+  color: white;
+}

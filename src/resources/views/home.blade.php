@@ -144,9 +144,9 @@ for ($i = 0; $i < $end; $i++) {
   <div class="column-container">
     <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3r">
       {{ csrf_field() }}
-      &emsp;&emsp;
+      &emsp;
 
-<button type="submit" name="page-button" value="<?php echo $start-10;?>" <?php if($start==0){ ?> style="display: none" <?php } ?>>
+<button class="page_button" type="submit" name="page-button" value="<?php echo $start-10;?>" <?php if($start==0){ ?> style="display: none" <?php } ?>>
 
   Back
 </button>
@@ -155,7 +155,7 @@ for ($i = 0; $i < $end; $i++) {
       {{ csrf_field() }}
 
 
-    <button type="submit" name="page-button" value=0 <?php if($start<=10 ){ ?> style="display: none" <?php } ?>>
+    <button class="page_button" type="submit" name="page-button" value=0 <?php if($start<=10 ){ ?> style="display: none" <?php } ?>>
 
     First
 
@@ -172,7 +172,7 @@ for ($i = 0; $i < $end; $i++) {
   <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3l" >
     {{ csrf_field() }}
     @isset($images)
-    <button type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if($images_num<=$end){ ?> style="display: none" <?php } ?>>
+    <button class="page_button" type="submit" name="page-button" value="<?php echo $start+10;?>" <?php if($images_num<=$end){ ?> style="display: none" <?php } ?>>
 
   Next
 
@@ -184,7 +184,7 @@ for ($i = 0; $i < $end; $i++) {
 <form action="{{ url('home') }}" method="GET" enctype="multipart/form-data" class="column-container3l" >
   {{ csrf_field() }}
   @isset($images)
-  <button type="submit" name="page-button" value="<?php echo $images_num-($images_num%10);?>" <?php if($images_num<=$end+10){ ?> style="display: none" <?php } ?>>
+  <button class="page_button" type="submit" name="page-button" value="<?php echo $images_num-($images_num%10);?>" <?php if($images_num<=$end+10){ ?> style="display: none" <?php } ?>>
 
 Last
 
