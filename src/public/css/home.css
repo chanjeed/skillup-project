@@ -113,6 +113,9 @@ text-align: center;
   width: 50%;
 }
 
+
+
+
 .right {
   display: block;
   margin-left: auto;
@@ -164,6 +167,19 @@ text-align: center;
 }
 
 .page_button:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.backtoprofile_button {
+  width:150px;
+  height:25px;
+  background-color: white;
+  color: dodgerblue;
+  border: 2px solid #008CBA;
+}
+
+.backtoprofile_button:hover {
   background-color: #008CBA;
   color: white;
 }
