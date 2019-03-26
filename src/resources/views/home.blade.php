@@ -9,12 +9,12 @@
 
 </style>
 <title>Home</title>
-<link href="home.css" rel="stylesheet" type="text/css">
+<?php require_once( 'home.css'); ?>
 @isset($username)
- <?php include( 'header.php'); ?>
+ <?php require_once( 'header.php'); ?>
 @endisset
 @empty($username)
- <?php include( 'header_out.php'); ?>
+ <?php require_once( 'header_out.php'); ?>
 @endempty
 
 
