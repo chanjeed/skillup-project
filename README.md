@@ -34,7 +34,7 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
       - http://skillup-chanjeed.herokuapp.com/home をログイン時にアクセスすると自分のProfile画面に遷移する
       　　　　- 未ログイン時にアクセスすると、ログイン画面に遷移するようにした
       - いいねボタンは、未ログイン時に押下できない（非アクティブ）ではなく、ログイン画面に遷移するようにした
-      - レイアウトをできるだけ奇麗にした
+      - レイアウトをできるだけ奇麗にした(css)
 
 ### - 難しかったところ
 
@@ -52,4 +52,5 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
 
 ### - その他（あれば）
 
-      - Herokuでは500 server errorのエラーが出ています
+      - スマホの画面に対応していない
+      - Profile画面のレイアウトが整っていない
