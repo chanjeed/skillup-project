@@ -58,7 +58,7 @@ class LikesController extends Controller
 
     $image_username = $_GET['image-username'];
     $images = Image::orderBy('id', 'desc')->where('username', $image_username)->get(); // 全データの取り出し
-    $user = DB::select("select * from public.user where github_id = '$image_username'");
+    $user = DB::select("select * from users where github_id = '$image_username'");
     $number_liked = Image::where('username',$image_username)->sum("like");
 
     $token = $request->session()->get('github_token', null);
@@ -76,7 +76,7 @@ class LikesController extends Controller
 
   public function likedusers(Request $request) {
     $postId = $_GET["liked-users-button"];
-    $likedusers = Like::orderBy('id', 'desc')->join('public.user', 'likes.username', '=', 'public.user.github_id')->where('likes.post_id', $postId)->select('likes.*', 'public.user.image')->get(); // 全データの取り出し
+    $likedusers = Like::orderBy('id', 'desc')->join('users', 'likes.username', '=', 'users.github_id')->where('likes.post_id', $postId)->select('likes.*', 'users.image')->get(); // 全データの取り出し
 
     $image = Image::where('id',$postId)->get();
 
