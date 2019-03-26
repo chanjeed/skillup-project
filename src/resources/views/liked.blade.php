@@ -148,7 +148,7 @@ text-align: center;
 
 <div class="center">
 <div class="row-container">
-<img src="data:image/png;base64,<?= $image->image ?>" width="400" height="400" class="center">
+<img src="data:image/png;base64,<?= $image->image ?>" width="300" height="300" class="center" position="absolute">
 </div>
 
 @isset($likedusers)
