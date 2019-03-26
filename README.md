@@ -54,4 +54,4 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
 
       - スマホの画面に対応していない
       - Profile画面のレイアウトが整っていない
-      - instragramもどきのウェブアプリに関係していないファイルも入っています
+      - instragramもどきのウェブアプリに関係していないファイルも入っている
