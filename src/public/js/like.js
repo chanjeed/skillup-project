@@ -13,10 +13,22 @@ function onClickBtn(){
   $.post('like',{postId:number,username:username},function(data){
     console.log(data);
     alert('like'.concat(number));
-    $('#postRequestData').html(data);
+
+    $.ajax({
+            url: "http://skillup-chanjeed.herokuapp.com/home",
+            type: "post",
+            dataType: "html"
+        }).done(function (response) {
+            $('#postRequestData').html(data);
+            alert("success");
+        }).fail(function () {
+            alert("failed");
+        });
 
 
   });
+
+
 }
 
 
