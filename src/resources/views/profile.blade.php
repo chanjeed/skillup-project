@@ -13,7 +13,7 @@
 
 .column-container5 {
   float: left;
-  width: 16.67%;
+  width: 10%;
 }
 
 
