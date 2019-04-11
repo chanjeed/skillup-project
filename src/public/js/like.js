@@ -3,7 +3,13 @@ function onClickBtn(){
 
   var number = document.querySelector('#likeBtn').value;
   var username = document.querySelector('#username').value;
-
+  $.ajaxSetup({
+    beforeSend: function(xhr, type) {
+        if (!type.crossDomain) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+        }
+    },
+});
   $.post('like',{postId:number,username:username},function(data){
     console.log(data);
     alert('like'.concat(number));
