@@ -159,7 +159,7 @@ for ($i = 0; $i < $end; $i++) {
         </form>
 
 
-        <button type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative' onclick="onClickBtn();" id="likeBtn" number="<?php echo htmlspecialchars($images[$i]->id);?>">
+        <button  width='75' height='75' position='relative' onclick="onClickBtn();" id="likeBtn" number="<?php echo htmlspecialchars($images[$i]->id);?>">
           like
         </button>
       </div>
@@ -224,8 +224,7 @@ for ($i = 0; $i < $end; $i++) {
   {{ csrf_field() }}
   @isset($images)
   <button class="page_button" type="submit" name="page-button" value="<?php echo $images_num-($images_num%10);?>" <?php if($images_num<=$start+20){ ?> style="display: none" <?php } ?>>
-    like
-  </button>
+
 
 Last
 

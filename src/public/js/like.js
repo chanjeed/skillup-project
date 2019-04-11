@@ -1,5 +1,5 @@
 function onClickBtn(){
-
+  alert('js');
   var number = document.querySelector('#likeBtn').number;
   var form = new FormData();
   form.append('number',number);
