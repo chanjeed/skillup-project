@@ -15,7 +15,7 @@ function onClickBtn(){
     alert('like'.concat(number));
 
     $.ajax({
-            url: "http://skillup-chanjeed.herokuapp.com/home",
+            url: "/home/like",
             type: "post",
             dataType: "html"
         }).done(function (response) {
