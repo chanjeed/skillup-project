@@ -13,9 +13,9 @@ class LikesController extends Controller
 {
   public function like(Request $request)
   {
-      //$postId = $_GET["like-button"];
+      //$postId = $_GET["postId"];
       //$token = $_GET["_token"];
-      $postId = $request->input("like-button");
+      $postId = $request->input("postId");
       $token = $request->session()->get('github_token', null);
 
 
