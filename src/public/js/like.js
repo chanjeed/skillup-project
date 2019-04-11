@@ -19,7 +19,7 @@ function onClickBtn(){
             type: "post",
             data:{
                 username:username.
-                postId:postId,
+                postId:number,
                 _token: '{{ csrf_token() }}'
             }
         }).done(function (response) {
