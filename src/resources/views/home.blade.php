@@ -10,6 +10,7 @@
 
 </style>
 <title>Home</title>
+<meta name="csrf-token" content="{{ csrf_token()}}"/>
 <link rel="stylesheet" href="{{ asset('/css/home.css') }}">
 @isset($username)
  <?php include( 'header.php'); ?>
@@ -133,9 +134,9 @@ for ($i = 0; $i < $end; $i++) {
       </div>
     <div class="column-container3r">
 
-        <form action="{{ url('home/like') }}" method="POST"  >
+        <form action="{{ url('home/like') }}" method="POST" action="#" >
           {{ csrf_field() }}
-
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="like-button" value=<?php echo htmlspecialchars($images[$i]->id);?>   >
             <input type="hidden" name="start" value="<?php echo htmlspecialchars($start);?>" >
 
@@ -162,6 +163,9 @@ for ($i = 0; $i < $end; $i++) {
         <button  width='75' height='75' position='relative' onclick="onClickBtn()" id="likeBtn" value="<?php echo htmlspecialchars($images[$i]->id);?>">
           like
         </button>
+        <div id="postRequestData">
+
+        </div>
       </div>
 
     </div>

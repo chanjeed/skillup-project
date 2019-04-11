@@ -1,6 +1,21 @@
 function onClickBtn(){
 
   var number = document.querySelector('#likeBtn').value;
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.post('like',{postId:number,username:username},function(data){
+    console.log(data);
+    $('#postRequestData').html(data);
+  });
+}
+
+
+function onClickBtn2(){
+
+  var number = document.querySelector('#likeBtn').value;
   var form = new FormData();
   form.append('number',number);
   alert('like'.concat(number));
