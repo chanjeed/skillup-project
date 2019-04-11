@@ -20,8 +20,8 @@
 
 
 
+<link rel="script" href="{{ asset('/js/like.js') }}">
 
-<script src="{{ asset('/js/like.js') }}"></script>
 </head>
 <body>
 
@@ -223,6 +223,8 @@ for ($i = 0; $i < $end; $i++) {
   {{ csrf_field() }}
   @isset($images)
   <button class="page_button" type="submit" name="page-button" value="<?php echo $images_num-($images_num%10);?>" <?php if($images_num<=$start+20){ ?> style="display: none" <?php } ?>>
+    like
+  </button>
 
 Last
 
