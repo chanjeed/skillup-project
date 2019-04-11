@@ -4,6 +4,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+
 <style>
 
 
@@ -16,6 +17,7 @@
 @empty($username)
  <?php include( 'header_out.php'); ?>
 @endempty
+
 
 
 
@@ -76,11 +78,11 @@ for ($i = 0; $i < $end; $i++) {
   </div>
 
     <div class="row-container">
-    <div class="center"><img src="data:image/png;base64,<?= $images[$i]->image ?>" width="300" height="300" position="relative"></div>
+    <div class="center"><img src="data:image/png;base64,{{ $images[$i]->image }}" width="300" height="300" position="relative"></div>
   </div>
 
     <div class="row-container">
-    <div class="center"><p class="center"><?= $images[$i]->comment ?> <p></div>
+    <div class="center"><p class="center"><?php echo htmlspecialchars($images[$i]->comment); ?> <p></div>
     </div>
 
     <div class="row-container">
@@ -93,33 +95,34 @@ for ($i = 0; $i < $end; $i++) {
         <form action="{{ url('home/liked') }}" method="GET" >
           {{ csrf_field() }}
 
-          <button class="likedusers_button" type="submit" name="liked-users-button" value=<?=$images[$i]->id?>>
-            <h3 style="color: deeppink"><?=$images[$i]->like?></h3>
+          <button class="likedusers_button" type="submit" name="liked-users-button" value=<?php echo htmlspecialchars($images[$i]->id);?>>
+            <h3 style="color: deeppink">{{$images[$i]->like}}</h3>
         </button>
         </form>
       </div>
     <div class="column-container3r">
+
         <form action="{{ url('home/like') }}" method="POST"  >
           {{ csrf_field() }}
 
-            <input type="hidden" name="like-button" value=<?=$images[$i]->id?>   >
-            <input type="hidden" name="start" value="<?= $start?>" >
+            <input type="hidden" name="like-button" value=<?php echo htmlspecialchars($images[$i]->id);?>   >
+            <input type="hidden" name="start" value="<?php echo htmlspecialchars($start);?>" >
 
             @isset($username)
             <?php
 
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
             if(empty($like)){
-              echo "<input type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'>";
+              echo "<input type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'id='like-button'>";
             }
             else{
-              echo "<input type='image' src='https://www.img.in.th/images/e975130e39ea820e64c753a868ce4b00.png' width='75' height='75' position='relative'>";
+              echo "<input type='image' src='https://www.img.in.th/images/e975130e39ea820e64c753a868ce4b00.png' width='75' height='75' position='relative' id='like-button'>";
             }
             ?>
             @endisset
             @empty($username)
             <?php
-            echo "<a href='/login/github'><img  src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'></a>";
+            echo "<a href='/login/github'><img  src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative' id='like-button'></a>";
             ?>
             @endempty
         </form>
