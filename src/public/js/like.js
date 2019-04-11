@@ -2,7 +2,7 @@
 function onClickBtn(){
 
   var number = document.querySelector('#likeBtn').value;
-
+  var username = document.querySelector('#username').value;
 
   $.post('like',{postId:number,username:username},function(data){
     console.log(data);

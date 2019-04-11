@@ -138,6 +138,7 @@ for ($i = 0; $i < $end; $i++) {
         <form action="{{ url('home/like') }}" method="POST" action="#" >
           {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <input type="hidden" name="username" value=<?php echo htmlspecialchars($username);?>   >
             <input type="hidden" name="like-button" value=<?php echo htmlspecialchars($images[$i]->id);?>   >
             <input type="hidden" name="start" value="<?php echo htmlspecialchars($start);?>" >
 
