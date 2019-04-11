@@ -37,7 +37,7 @@
 
 <div class="row-container">
   <div class="column-container4">
-<img src="<?= $user->image ?>" width="200" height="200" >
+<img src="<?= $user->image ?>" width="300" height="300" position="relative">
 </div>
   <div class="column-container4">
 <div class="username">
