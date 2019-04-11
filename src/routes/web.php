@@ -48,7 +48,7 @@ Route::get('/home/profile/image', 'ImageController@index');
 Route::get('/liked/profile', 'LikesController@profile');
 Route::get('/home/liked', 'LikesController@likedusers');
 
-Routh::post('/like',function(){
+Route::post('/like',function(){
   if(Request::ajax()){
     return Response::json(Request::all());
   }
