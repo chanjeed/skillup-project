@@ -1,13 +1,11 @@
 function onClickBtn(){
 
   var number = document.querySelector('#likeBtn').value;
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-    }
-  });
+
+  
   $.post('like',{postId:number,username:username},function(data){
     console.log(data);
+    alert('like'.concat(number));
     $('#postRequestData').html(data);
   });
 }
