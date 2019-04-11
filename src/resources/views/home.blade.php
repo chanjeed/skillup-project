@@ -95,7 +95,7 @@ for ($i = 0; $i < $end; $i++) {
         <form action="{{ url('home/liked') }}" method="GET" >
           {{ csrf_field() }}
 
-          <button class="likedusers_button" type="submit" name="liked-users-button" value=<?php echo htmlspecialchars($images[$i]->id);?>>
+          <button class="likedusers_button" type="submit" name="liked-users-button" value=<?=$images[$i]->id)?>>
             <h3 style="color: deeppink">{{$images[$i]->like}}</h3>
         </button>
         </form>
@@ -105,8 +105,8 @@ for ($i = 0; $i < $end; $i++) {
         <form action="{{ url('home/like') }}" method="POST"  >
           {{ csrf_field() }}
 
-            <input type="hidden" name="like-button" value=<?php echo htmlspecialchars($images[$i]->id);?>   >
-            <input type="hidden" name="start" value="<?php echo htmlspecialchars($start);?>" >
+            <input type="hidden" name="like-button" value=<?=$images[$i]->id?>   >
+            <input type="hidden" name="start" value="<?=$start?>" >
 
             @isset($username)
             <?php
