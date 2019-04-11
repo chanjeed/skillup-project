@@ -14,6 +14,8 @@ function onClickBtn(){
     console.log(data);
     alert('like'.concat(number));
     $('#postRequestData').html(data);
+
+
   });
 }
 

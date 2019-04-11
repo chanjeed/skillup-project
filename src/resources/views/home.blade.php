@@ -43,19 +43,12 @@ if(!isset($_GET['page-button'])){ // $_GET['page_id'] はURLに渡された現�
 
 <?php
 
-if(isset($_POST['number'])){
-    alert('set number');
-  $postId = $_POST['number'];
-  if(isset($_SESSION['github_token'])){
-    $token = $_SESSION['github_token'];
-  }
-  else{
-    redirect('login/github');
-  }
+if(isset($_POST['postId'])){
+    alert('set postId');
+  $postId = $_POST['postId'];
 
-  $github_user = Socialite::driver('github')->userFromToken($token);
 
-  $username = $github_user->nickname;
+  $username = $_POST['username'];
 
   $now = date("Y/m/d H:i:s");
 
