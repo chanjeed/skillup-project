@@ -13,7 +13,7 @@
 
 .column-container5 {
   float: left;
-  width: 10%;
+  width: 16.67%;
 }
 
 
@@ -21,7 +21,7 @@
 
 </style>
 <title>Profile</title>
-<link href="home.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{ asset('/css/home.css') }}">
 @isset($username)
  <?php include( 'header.php'); ?>
 @endisset
