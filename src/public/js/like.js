@@ -23,6 +23,7 @@ function onClickBtn(){
 function onClickBtn2(){
 
   var number = document.querySelector('#likeBtn').value;
+  var username = document.querySelector('#username').value;
   var form = new FormData();
   form.append('number',number);
   alert('like'.concat(number));
@@ -31,7 +32,7 @@ function onClickBtn2(){
   xhr.onload = function(e){
     if (this.status == 200){
       var result = this.response;
-      var msg = document.queryelector('#msg');
+      var msg = document.queryelector('#postRequestData');
       msg.textContent = result;
     }
   };
