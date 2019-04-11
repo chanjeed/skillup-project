@@ -159,9 +159,9 @@ for ($i = 0; $i < $end; $i++) {
         <button  width='75' height='75' position='relative' onclick="onClickBtn();" id="likeBtn" value="<?php echo htmlspecialchars($images[$i]->id);?>">
           like
         </button>
-        <div id="postRequestData">
-
-        </div>
+        <p id="postRequestData">
+            Hello World
+        </p>
       </div>
 
     </div>
