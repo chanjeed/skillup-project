@@ -21,7 +21,7 @@
 
 
 
-<script src="like.js"></script>
+<script src="{{ asset('/js/like.js') }}"></script>
 </head>
 <body>
 
