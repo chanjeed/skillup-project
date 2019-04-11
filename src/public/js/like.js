@@ -17,7 +17,11 @@ function onClickBtn(){
     $.ajax({
             url: "/home/like",
             type: "post",
-            dataType: "html"
+            data:{
+                username:username.
+                postId:postId,
+                _token: '{{ csrf_token() }}'
+            }
         }).done(function (response) {
             $('#postRequestData').html(data);
             alert("success");
@@ -36,6 +40,7 @@ function onClickBtn2(){
 
   var number = document.querySelector('#likeBtn').value;
   var username = document.querySelector('#username').value;
+
   var form = new FormData();
   form.append('number',number);
   alert('like'.concat(number));
