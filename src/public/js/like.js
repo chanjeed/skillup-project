@@ -18,7 +18,7 @@ function onClickBtn(){
             url: "/home/like",
             type: "post",
             data:{
-                username:username.
+                username:username,
                 postId:number,
                 _token: '{{ csrf_token() }}'
             }
