@@ -43,6 +43,7 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
       - ログイン機能
       - レイアウトを奇麗にする
       　　　　 - ボタン/画像を正しい場所に表示させる
+      - JavaScript/ajax
 
 ### - 追加した機能について説明（あれば）
 
@@ -53,5 +54,8 @@ herokuアプリ : http://skillup-chanjeed.herokuapp.com/home
 ### - その他（あれば）
 
       - スマホの画面に対応していない
-      - Profile画面のレイアウトが整っていない
       - instragramもどきのウェブアプリに関係していないファイルも入っている
+
+### - 今後必要な追加実装
+
+      - いいなボタンや削除ボタンを、押された際のajaxでの非同期通信　（今はリダイレクトされて画面に遷移する）
