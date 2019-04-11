@@ -159,7 +159,7 @@ for ($i = 0; $i < $end; $i++) {
         </form>
 
 
-        <input type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative' onclick="onClickBtn();" id="likeBtn" number="<?php echo htmlspecialchars($images[$i]->id);?>">
+        <button type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative' onclick="onClickBtn();" id="likeBtn" number="<?php echo htmlspecialchars($images[$i]->id);?>">
 
       </div>
 
