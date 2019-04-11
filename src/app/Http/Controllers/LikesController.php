@@ -15,7 +15,7 @@ class LikesController extends Controller
   {
       //$postId = $_GET["postId"];
       //$token = $_GET["_token"];
-      $postId = $request->input("postId");
+      $postId = $request->input("like-button");
       $token = $request->session()->get('github_token', null);
 
 
@@ -41,7 +41,7 @@ class LikesController extends Controller
       $start = $request->input("start");
 
 
-      //return redirect('home?page-button='.$start);
+      return redirect('home?page-button='.$start);
 
   }
 

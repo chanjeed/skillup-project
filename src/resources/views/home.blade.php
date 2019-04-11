@@ -155,13 +155,15 @@ for ($i = 0; $i < $end; $i++) {
             @endempty
         </form>
 
-
+        <!--
         <button  width='75' height='75' position='relative' onclick="onClickBtn();" id="likeBtn" value="<?php echo htmlspecialchars($images[$i]->id);?>">
           like
         </button>
+
         <p id="postRequestData">
             Hello World
         </p>
+      -->
       </div>
 
     </div>
