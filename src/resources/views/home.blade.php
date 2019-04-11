@@ -42,7 +42,7 @@ if(!isset($_GET['page-button'])){ // $_GET['page_id'] はURLに渡された現�
 <?php
 
 if(isset($_POST['number'])){
-
+    alert('set number');
   $postId = $_POST['number'];
   if(isset($_SESSION['github_token'])){
     $token = $_SESSION['github_token'];
