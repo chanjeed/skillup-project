@@ -24,7 +24,7 @@ function onClickBtn(){
             }
         }).done(function (response) {
             var msg = document.querySelector('#postRequestData');
-            msg.textContent = data;
+            msg.value = data;
             alert("success");
         }).fail(function () {
             alert("failed");
