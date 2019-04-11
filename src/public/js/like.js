@@ -1,9 +1,9 @@
 function onClickBtn(){
-  alert('js');
+
   var number = document.querySelector('#likeBtn').number;
   var form = new FormData();
   form.append('number',number);
-
+  alert('like'.concat(number));
   var xhr = new XMLHttpRequest();
   xhr.open('POST','/home.blade.php',true);
   xhr.onload = function(e){
