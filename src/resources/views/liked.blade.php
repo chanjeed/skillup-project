@@ -6,6 +6,14 @@
 <meta charset="utf-8">
 <style>
 
+
+img{
+
+  width: 100%;
+  height: auto;
+}
+
+
 .username{
   width:100px;
   height:25px;
