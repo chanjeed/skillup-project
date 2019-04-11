@@ -21,7 +21,7 @@
 
 
 
-
+<script src="like.js"></script>
 </head>
 <body>
 
@@ -36,6 +36,37 @@ if(!isset($_GET['page-button'])){ // $_GET['page_id'] はURLに渡された現�
 
 }else{
     $start = $_GET['page-button'];
+}
+?>
+
+<?php
+
+if(isset($_POST['number'])){
+
+  $postId = $_POST['number'];
+  if(isset($_SESSION['github_token'])){
+    $token = $_SESSION['github_token'];
+  }
+  else{
+    redirect('login/github');
+  }
+
+  $github_user = Socialite::driver('github')->userFromToken($token);
+
+  $username = $github_user->nickname;
+
+  $now = date("Y/m/d H:i:s");
+
+  $like = DB::select('select * from likes where post_id = ? and username = ?', [$postId,$username]);
+  if (empty($like)) {
+      Like::insert(["post_id" => $postId,"username"=>$username,"created_at"=>$now,"updated_at"=>$now]);
+      Image::findOrFail($postId)->increment('like');
+  }
+  else{
+    Like::where('post_id',$postId)->where('username',$username)->delete();
+    Image::findOrFail($postId)->decrement('like');
+  }
+
 }
 ?>
 
@@ -126,6 +157,10 @@ for ($i = 0; $i < $end; $i++) {
             ?>
             @endempty
         </form>
+
+
+        <input type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative' onclick="onClickBtn();" id="likeBtn" number="<?php echo htmlspecialchars($images[$i]->id);?>">
+
       </div>
 
     </div>
