@@ -159,7 +159,7 @@ for ($i = 0; $i < $end; $i++) {
         </form>
 
 
-        <button  width='75' height='75' position='relative' onclick="onClickBtn()" id="likeBtn" number="<?php echo htmlspecialchars($images[$i]->id);?>">
+        <button  width='75' height='75' position='relative' onclick="onClickBtn()" id="likeBtn" value="<?php echo htmlspecialchars($images[$i]->id);?>">
           like
         </button>
       </div>

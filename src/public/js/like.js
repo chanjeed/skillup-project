@@ -1,6 +1,6 @@
 function onClickBtn(){
 
-  var number = document.querySelector('#likeBtn').number;
+  var number = document.querySelector('#likeBtn').value;
   var form = new FormData();
   form.append('number',number);
   alert('like'.concat(number));
