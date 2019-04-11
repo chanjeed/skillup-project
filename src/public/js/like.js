@@ -1,8 +1,10 @@
+import $ from 'jquery';
+
 function onClickBtn(){
 
   var number = document.querySelector('#likeBtn').value;
 
-  
+
   $.post('like',{postId:number,username:username},function(data){
     console.log(data);
     alert('like'.concat(number));
