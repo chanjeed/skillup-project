@@ -143,8 +143,9 @@ for ($i = 0; $i < $end; $i++) {
             <input type="hidden" name="start" value="<?php echo htmlspecialchars($start);?>" >
 
             @isset($username)
-            <?php
             <input type="hidden" name="username" value="<?php echo htmlspecialchars($username);?>"  >
+            <?php
+
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
             if(empty($like)){
               echo "<input type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'id='like-button'>";
