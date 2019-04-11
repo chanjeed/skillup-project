@@ -51,7 +51,7 @@
   <h2 style="color: deeppink" class="center"><?= $number_liked ?></h2>
 </div>
 </div>
-
+<hr>
 <br>
 <hr>
 <br>
@@ -59,9 +59,6 @@
 <div class="row-container">
 @isset($images)
   @foreach ($images as $image)
-
-
-
 
     <div class="column-container5">
     <div class="center">
@@ -79,11 +76,6 @@
     <div class="row-container">
 
     @endif
-
-
-
-
-
 
   @endforeach
 @endisset
