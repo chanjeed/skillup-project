@@ -143,7 +143,7 @@ for ($i = 0; $i < $end; $i++) {
             <input type="hidden" name="start" value="<?php echo htmlspecialchars($start);?>" >
 
             @isset($username)
-            <input type="hidden" name="username" value="<?php echo htmlspecialchars($username);?>"  >
+            <input type="hidden" id="username" value="<?php echo htmlspecialchars($username);?>"  >
             <?php
 
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
