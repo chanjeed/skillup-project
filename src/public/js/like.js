@@ -23,7 +23,8 @@ function onClickBtn(){
                 _token: '{{ csrf_token() }}'
             }
         }).done(function (response) {
-            $('#postRequestData').html(data);
+            var msg = document.queryelector('#postRequestData');
+            msg.textContent = data;
             alert("success");
         }).fail(function () {
             alert("failed");
