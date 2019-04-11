@@ -55,6 +55,10 @@
 <br>
 <hr>
 <br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="row-container">
 @isset($images)
