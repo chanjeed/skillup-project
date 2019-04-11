@@ -41,7 +41,7 @@ class LikesController extends Controller
       $start = $request->input("start");
 
 
-      return redirect('home?page-button='.$start);
+      //return redirect('home?page-button='.$start);
 
   }
 
