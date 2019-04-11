@@ -138,13 +138,13 @@ for ($i = 0; $i < $end; $i++) {
         <form action="{{ url('home/like') }}" method="POST" action="#" >
           {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <input type="hidden" name="username" value=<?php echo htmlspecialchars($username);?>   >
-            <input type="hidden" name="like-button" value=<?php echo htmlspecialchars($images[$i]->id);?>   >
+
+            <input type="hidden" name="like-button" value="<?php echo htmlspecialchars($images[$i]->id);?>"  >
             <input type="hidden" name="start" value="<?php echo htmlspecialchars($start);?>" >
 
             @isset($username)
             <?php
-
+            <input type="hidden" name="username" value="<?php echo htmlspecialchars($username);?>"  >
             $like = DB::select('select * from likes where post_id = ? and username = ?', [$images[$i]->id,$username]);
             if(empty($like)){
               echo "<input type='image' src='https://www.img.in.th/images/c3dde9ec3e188831992f765d61790b98.png' width='75' height='75' position='relative'id='like-button'>";
