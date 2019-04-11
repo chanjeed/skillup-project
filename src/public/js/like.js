@@ -23,7 +23,7 @@ function onClickBtn(){
                 _token: '{{ csrf_token() }}'
             }
         }).done(function (response) {
-            var msg = document.queryelector('#postRequestData');
+            var msg = document.querySelector('#postRequestData');
             msg.textContent = data;
             alert("success");
         }).fail(function () {
@@ -50,7 +50,7 @@ function onClickBtn2(){
   xhr.onload = function(e){
     if (this.status == 200){
       var result = this.response;
-      var msg = document.queryelector('#postRequestData');
+      var msg = document.querySelector('#postRequestData');
       msg.textContent = result;
     }
   };
